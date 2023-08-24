@@ -6,7 +6,16 @@
 		<result column="id" jdbcType="INTEGER" property="id" />
 		<result column="duration_type" jdbcType="VARCHAR" property="durationType" />
 	</resultMap>
+	
+	<!-- duration_typeの全件取得-->
 	<select id="findAll" resultMap="DurationTypeMap">
 		SELECT id, duration_type FROM duration_types
 	</select>
+	
+	<!-- duration_typeを一件取得 -->
+	<select id="findById" resultMap="DurationTypeMap">
+		SELECT id, duration_type FROM duration_types
+		WHERE id = #{id}	
+	</select>
+	
 </mapper>

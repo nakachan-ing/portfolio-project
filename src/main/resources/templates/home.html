@@ -6,12 +6,16 @@
 </head>
 <body>
 
-<h1>Hello World</h1>
+<h1>Duration Type一覧（findAll）</h1>
 
 <div th:each="duration : ${durationList}">
 <p th:text="${duration.id}"></p>
 <p th:text="${duration.durationType}"></p>
 </div>
+
+<h1>findById</h1>
+<p th:text="${durationType.id}"></p>
+<p th:text="${durationType.durationType}"></p>
 
 </body>
 </html>

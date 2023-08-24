@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,4 +14,7 @@ public interface DurationTypeMapper {
 	 * @return 期間のタイプ
 	 */
 	List<DurationType> findAll();
+	
+	Optional<DurationType> findById(int id);
+	
 }

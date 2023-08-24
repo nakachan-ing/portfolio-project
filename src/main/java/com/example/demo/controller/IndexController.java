@@ -25,7 +25,9 @@ public class IndexController {
 	@GetMapping("/")
 	public String index(Model model) {
 		List<DurationType> durationList = durationTypeMapper.findAll();
+		DurationType durationType = durationTypeMapper.findById(2).get();
 		model.addAttribute("durationList", durationList);
+		model.addAttribute("durationType", durationType);
 		return "home";
 	}
 }
