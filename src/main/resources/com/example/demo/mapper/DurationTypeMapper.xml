@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DurationTypeMapper">
+	<resultMap id="DurationTypeMap"
+		type="com.example.demo.entity.DurationType">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="duration_type" jdbcType="VARCHAR" property="durationType" />
+	</resultMap>
+	<select id="findAll" resultMap="DurationTypeMap">
+		SELECT id, duration_type FROM duration_types
+	</select>
+</mapper>

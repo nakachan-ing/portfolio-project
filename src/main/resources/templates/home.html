@@ -8,5 +8,10 @@
 
 <h1>Hello World</h1>
 
+<div th:each="duration : ${durationList}">
+<p th:text="${duration.id}"></p>
+<p th:text="${duration.durationType}"></p>
+</div>
+
 </body>
 </html>
