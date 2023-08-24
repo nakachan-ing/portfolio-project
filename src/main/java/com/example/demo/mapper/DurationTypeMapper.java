@@ -17,4 +17,6 @@ public interface DurationTypeMapper {
 	
 	Optional<DurationType> findById(int id);
 	
+	List<DurationType> findAllJoinProject();
+	
 }

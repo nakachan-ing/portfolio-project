@@ -9,13 +9,26 @@
 <h1>Duration Type一覧（findAll）</h1>
 
 <div th:each="duration : ${durationList}">
-<p th:text="${duration.id}"></p>
+<p th:text="${duration.durationId}"></p>
 <p th:text="${duration.durationType}"></p>
 </div>
 
 <h1>findById</h1>
-<p th:text="${durationType.id}"></p>
+<p th:text="${durationType.durationId}"></p>
 <p th:text="${durationType.durationType}"></p>
+
+<h1>findAllJoinProject</h1>
+<div th:each="duration2 : ${durationList2}">
+<p th:text="${duration2.durationId}"></p>
+<p th:text="${duration2.durationType}"></p>
+<div th:each="project : ${duration2.projectList}">
+<p th:text="${project.projectId}"></p>
+<p th:text="${project.projectName}"></p>
+<p th:text="${project.detail}"></p>
+<p th:text="${project.created}"></p>
+<p th:text="${project.updated}"></p>
+</div>
+</div>
 
 </body>
 </html>

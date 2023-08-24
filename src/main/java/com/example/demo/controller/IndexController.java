@@ -26,8 +26,10 @@ public class IndexController {
 	public String index(Model model) {
 		List<DurationType> durationList = durationTypeMapper.findAll();
 		DurationType durationType = durationTypeMapper.findById(2).get();
+		List<DurationType> durationList2 = durationTypeMapper.findAllJoinProject();
 		model.addAttribute("durationList", durationList);
 		model.addAttribute("durationType", durationType);
+		model.addAttribute("durationList2", durationList2);
 		return "home";
 	}
 }

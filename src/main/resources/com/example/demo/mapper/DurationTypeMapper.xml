@@ -3,19 +3,46 @@
 <mapper namespace="com.example.demo.mapper.DurationTypeMapper">
 	<resultMap id="DurationTypeMap"
 		type="com.example.demo.entity.DurationType">
-		<result column="id" jdbcType="INTEGER" property="id" />
+		<id column="duration_id" jdbcType="INTEGER" property="durationId" />
 		<result column="duration_type" jdbcType="VARCHAR" property="durationType" />
+		
+		<collection property="projectList"  ofType="com.example.demo.entity.Project" >
+			<id column="project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="project_name" jdbcType="INTEGER" property="projectName" />
+			<result column="detail" jdbcType="VARCHAR" property="detail" />
+			<result column="level_id" jdbcType="INTEGER" property="levelId" />
+			<result column="duration_id" jdbcType="INTEGER" property="durationId" />		
+			<result column="created_at" jdbcType="DATE" property="created" />
+			<result column="updated_at" jdbcType="DATE" property="updated" />
+		</collection>
+		
 	</resultMap>
 	
 	<!-- duration_typeの全件取得-->
 	<select id="findAll" resultMap="DurationTypeMap">
-		SELECT id, duration_type FROM duration_types
+		SELECT duration_id, duration_type FROM duration_types
 	</select>
 	
 	<!-- duration_typeを一件取得 -->
 	<select id="findById" resultMap="DurationTypeMap">
-		SELECT id, duration_type FROM duration_types
-		WHERE id = #{id}	
+		SELECT duration_id, duration_type FROM duration_types
+		WHERE duration_id = #{durationId}	
 	</select>
+	
+	<!-- duration_typeと紐付くprojectを一緒に取得 -->
+	<select id="findAllJoinProject" resultMap="DurationTypeMap">
+		SELECT
+			duration_types.duration_id,
+			duration_types.duration_type,
+			projects.project_id,
+			projects.project_name,
+			projects.detail,
+			projects.level_id,
+			projects.duration_id,
+			projects.created_at,
+			projects.updated_at
+		FROM duration_types
+		JOIN projects ON duration_types.duration_id = projects.duration_id
+	</select>		
 	
 </mapper>

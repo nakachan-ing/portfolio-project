@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class DurationType {
 
-	private int id;
+	private int durationId;
 	
 	private String durationType;
 	

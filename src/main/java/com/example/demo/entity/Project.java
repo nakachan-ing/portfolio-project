@@ -7,15 +7,15 @@ import lombok.Data;
 
 @Data
 public class Project {
-	private int id;
+	private int projectId;
 	
 	private String projectName;
 	
 	private String detail;
 	
-	private LevelType levelType;
+	private int levelId;
 	
-	private DurationType durationType;
+	private int durationId;
 	
 	private LocalDateTime created;
 	
