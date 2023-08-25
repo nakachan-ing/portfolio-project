@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class Comment {
 
-	private int id;
+	private int commentId;
 	
-	private Project project;
+	private int projectId;
 	
 	private String remark;
 }

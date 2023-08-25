@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProjectMapper">
+	<resultMap id="ProjectMap"
+		type="com.example.demo.entity.Project">
+		<id column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="project_name" jdbcType="VARCHAR" property="projectName" />
+		<result column="detail" jdbcType="VARCHAR" property="detail" />
+		<result column="level_id" jdbcType="INTEGER" property="levelId" />
+		<result column="duration_id" jdbcType="INTEGER" property="durationId" />		
+		<result column="created_at" jdbcType="DATE" property="created" />
+		<result column="updated_at" jdbcType="DATE" property="updated" />
+		
+		<collection property="levelType"  ofType="com.example.demo.entity.LevelType" >
+			<id column="level_id" jdbcType="INTEGER" property="levelId" />
+			<result column="level_type" jdbcType="VARCHAR" property="levelType" />
+		</collection>
+		
+		<collection property="durationType"  ofType="com.example.demo.entity.DurationType" >
+			<id column="duration_id" jdbcType="INTEGER" property="durationId" />
+			<result column="duration_type" jdbcType="VARCHAR" property="durationType" />
+		</collection>
+		
+		<collection property="commentList"  ofType="com.example.demo.entity.Comment" >
+			<id column="comment_id" jdbcType="INTEGER" property="commentId" />
+			<result column="project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="remark" jdbcType="VARCHAR" property="remark" />
+		</collection>
+		
+	</resultMap>
+	
+	<!-- projectの全件取得-->
+	<select id="findAll" resultMap="ProjectMap">
+		SELECT
+			project_id,
+			project_name,
+			detail,
+			level_id,
+			duration_id,
+			created_at,
+			updated_at
+		FROM projects
+	</select>
+	
+	<!-- projectを一件取得 -->
+	<select id="findById" resultMap="ProjectMap">
+		SELECT
+			project_id,
+			project_name,
+			detail,
+			level_id,
+			duration_id,
+			created_at,
+			updated_at
+		FROM projects
+		WHERE project_id = #{projectId}
+	</select>
+	
+	<!-- projectと紐付くlevel, duration, commentを一緒に取得 -->
+	<select id="findAllJoin" resultMap="ProjectMap">
+		SELECT
+			projects.project_id,
+			projects.project_name,
+			projects.detail,
+			projects.level_id,
+			projects.duration_id,
+			projects.created_at,
+			projects.updated_at,
+			level_types.level_type,
+			duration_types.duration_type,
+			comments.comment_id,
+			comments.project_id,
+			comments.remark
+		FROM projects
+		INNER JOIN level_types ON projects.level_id = level_types.level_id
+		INNER JOIN duration_types ON projects.level_id = duration_types.duration_id
+		LEFT JOIN comments ON projects.project_id = comments.project_id
+	</select>
+	
+	<!-- projectと紐付くlevel, duration, commentを一件取得 -->
+	<select id="findByIdJoin" resultMap="ProjectMap">
+		SELECT
+			projects.project_id,
+			projects.project_name,
+			projects.detail,
+			projects.level_id,
+			projects.duration_id,
+			projects.created_at,
+			projects.updated_at,
+			level_types.level_type,
+			duration_types.duration_type,
+			comments.comment_id,
+			comments.project_id,
+			comments.remark
+		FROM projects
+		INNER JOIN level_types ON projects.level_id = level_types.level_id
+		INNER JOIN duration_types ON projects.level_id = duration_types.duration_id
+		LEFT JOIN comments ON projects.project_id = comments.project_id
+		WHERE projects.project_id = #{projectId}
+	</select>
+
+
+</mapper>

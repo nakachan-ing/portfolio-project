@@ -21,5 +21,9 @@ public class Project {
 	
 	private LocalDateTime updated;
 	
+	private LevelType levelType;
+	
+	private DurationType durationType;
+	
 	private List<Comment> commentList;
 }
