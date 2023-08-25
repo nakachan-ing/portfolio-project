@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+	th:href="@{/css/bulma.min.css}">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/js/comment.js"></script> -->
+<title th:text="${headerTitle}">Insert title here</title>
+</head>
+<body>
+	<div th:replace="~{block/header_nav::header_nav}"></div>
+	<section class="columns p-4 m-0" th:object="${project}">
+		<div class="column is-8">
+			<h4 th:text="*{projectName}" class="title is-4">プロジェクト一覧</h4>
+
+			<div class="tile is-parent">
+				<article class="tile is-child box">
+					<p class="title is-5">プロジェクトの内容</p>
+					<div class="content">
+						<p th:text="*{detail}"></p>
+					</div>
+					<p class="title is-5">プロジェクトのレベル</p>
+					<div class="content">
+						<p th:text="*{levelType.levelType}"></p>
+					</div>
+					<p class="title is-5">プロジェクトの期間</p>
+					<div class="content">
+						<p th:text="*{durationType.durationType}"></p>
+					</div>
+				</article>
+			</div>
+			<div class="control">
+
+				<form method="post" action="#">
+					<input type="hidden" name="id" th:value="*{projectId}"> <input
+						type="hidden" name="projectName" th:value="*{projectName}">
+					<input type="hidden" name="detail" th:value="*{detail}"> <input
+						type="hidden" name="levelId" th:value="*{LevelType.levelId}">
+					<input type="hidden" name="durationId" th:value="*{durationType.durationId}">
+					<input type="hidden" name="created" th:value="*{created}">
+					<input type="hidden" name="updated" th:value="*{updated}">
+					<input type="submit" class="button is-primary"
+						th:formaction="@{/project/edit}" value="編集する"> <a href="#"
+						class="button is-link is-light" th:href="@{/project/index}">戻る</a>
+				</form>
+			</div>
+		</div>
+
+
+		<div class="submenu column">
+
+			<!-- <form method="post" action="#"
+				th:action="${commentForm.isNewComment} ? @{/project/comment} : @{/project/update}"
+				th:object="${commentForm}">
+				<article class="media">
+
+					<div class="media-content">
+						<div class="field">
+							<p class="control">
+								<textarea class="textarea" name="message" id="message"
+									placeholder="Add a comment..." th:field="*{message}"></textarea>
+							</p>
+							<div th:if="${#fields.hasErrors('message')}"
+								th:errors="*{message}"></div>
+						</div>
+						<div class="field">
+							<p class="control" th:if="${commentForm.newComment}">
+								<input type="hidden" name="projectId" id="projectId"
+									th:value="${projectForm.id}">
+								<button class="button" type="submit"
+									th:formaction="@{/project/comment}">コメントする</button>
+							</p>
+							<p class="control" th:unless="${commentForm.newComment}">
+								<input type="hidden" name="id" id="id" th:value="*{id}">
+								<input type="hidden" name="projectId" id="projectId"
+									th:value="${projectForm.id}">
+								<button class="button" type="submit"
+									th:formaction="@{/project/comment/update}">保存する</button>
+
+							</p>
+						</div>
+					</div>
+				</article>
+			</form><br> -->
+
+			<article class="media" th:each="comment,stat:*{commentList}">
+				<div class="media-content">
+					<div class="content">
+						<p th:name="${'commentList[' + stat.index + '].message'}"
+							th:text="${comment.remark}"></p>
+					</div>
+					<nav class="level is-mobile">
+						<div class="level-left">
+							<a class="level-item"> <span class="icon is-small"><i
+									class="fas fa-reply"></i></span>
+							</a> <a class="level-item"> <span class="icon is-small"><i
+									class="fas fa-retweet"></i></span>
+							</a> <a class="level-item"> <span class="icon is-small"><i
+									class="fas fa-heart"></i></span>
+							</a>
+						</div>
+					</nav>
+
+				</div>
+				<div class="media-right">
+					<form method="post" action="#">
+						<input type="hidden" name="commentId" id="commentId"
+							th:value="${comment.commentId}"> <input type="hidden"
+							name="projectId" id="projectId" th:value="*{projectId}">
+						<button class="button is-text" type="submit"
+							th:formaction="@{/project/comment/edit}">編集する</button>
+						<button class="button is-text" type="submit"
+							th:formaction="@{/project/comment/delete}">削除する</button>
+					</form>
+				</div>
+
+			</article>
+		</div>
+	</section>
+</body>
+</html>

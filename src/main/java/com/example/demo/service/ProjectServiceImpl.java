@@ -29,4 +29,14 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectMapper.findById(id);
 	}
 
+	@Override
+	public List<Project> findAllJoin() {
+		return projectMapper.findAllJoin();
+	}
+
+	@Override
+	public Optional<Project> findByIdJoin(int id) {
+		return projectMapper.findByIdJoin(id);
+	}
+
 }
