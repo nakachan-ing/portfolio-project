@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Project;
-import com.example.demo.mapper.ProjectMapper;
+import com.example.demo.service.ProjectService;
 
 @Controller
 @RequestMapping("/")
 public class ProjectController {
 	
-	private final ProjectMapper projectMapper;
+	private final ProjectService projectService;
 	
 	@Autowired
-	public ProjectController(ProjectMapper projectMapper) {
-		this.projectMapper = projectMapper;
+	public ProjectController(ProjectService projectService) {
+		this.projectService = projectService;
 	}
 	
 	@GetMapping("/")
 	public String home(Model model) {
-		List<Project> projectList = projectMapper.findAll();
+		List<Project> projectList = projectService.findAll();
 		model.addAttribute("headerTitle", "Portfolio Community - 共同制作プラットフォーム");
 		model.addAttribute("projectList", projectList);
 		model.addAttribute("title", "プロジェクト一覧");
