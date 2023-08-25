@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class LevelType {
 
-	private int id;
+	private int levelId;
 	
 	private String levelType;
 	

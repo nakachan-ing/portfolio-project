@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/hero.css}">
+<link rel="stylesheet"
+	href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
+
+<title th:text="${headerTitle}">Insert title here</title>
+</head>
+<body>
+
+	<div th:replace="~{block/header_nav::header_nav}"></div>
+
+	<section class="columns p-4 m-0">
+		<div class="submenu column is-4"></div>
+
+		<div class="column">
+		<h3 th:text="${title}" class="title is-3">プロジェクト一覧</h3>
+			<a href="#" class="button is-info">新規投稿する</a><br>
+
+			<div class="sandbox">
+			<article th:each="project : ${projectList}" class="box media">
+				<figure class="media-left">
+					<p class="image is-64x64">
+						<img src="sample01.png">
+					</p>
+				</figure>
+				<div class="media-content">
+					<div class="content">
+						<h4 th:text="${project.projectName}" class="title is-4">プロジェクト名</h4>
+						<p th:text="${project.detail}">プロジェクトの内容</p>
+						<p>
+							投稿日： <small th:text="${project.created}"><a><i
+									class="far fa-thumbs-up"></i></a> · <a>返信</a> · 3 時間前</small>
+						</p>
+					</div>
+				</div>
+				<div class="media-right">
+				<a class="button is-text" th:href="@{/project/{id}(id=${project.projectId})}">詳細</a>
+				</div>
+			</article>
+			</div>
+		</div>
+		
+	</section>
+	<script th:src="@{/js/bulma.js}"></script>
+</body>
+</html>
