@@ -25,6 +25,7 @@
 			<id column="comment_id" jdbcType="INTEGER" property="commentId" />
 			<result column="project_id" jdbcType="INTEGER" property="projectId" />
 			<result column="remark" jdbcType="VARCHAR" property="remark" />
+			<result column="created_at" jdbcType="DATE" property="created" />
 		</collection>
 		
 	</resultMap>
@@ -70,7 +71,8 @@
 			duration_types.duration_type,
 			comments.comment_id,
 			comments.project_id,
-			comments.remark
+			comments.remark,
+			comments.created_at
 		FROM projects
 		INNER JOIN level_types ON projects.level_id = level_types.level_id
 		INNER JOIN duration_types ON projects.level_id = duration_types.duration_id
@@ -91,7 +93,8 @@
 			duration_types.duration_type,
 			comments.comment_id,
 			comments.project_id,
-			comments.remark
+			comments.remark,
+			comments.created_at
 		FROM projects
 		INNER JOIN level_types ON projects.level_id = level_types.level_id
 		INNER JOIN duration_types ON projects.level_id = duration_types.duration_id

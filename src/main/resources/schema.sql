@@ -26,5 +26,6 @@ CREATE TABLE `comments`(
 	`comment_id` int NOT NULL AUTO_INCREMENT,
 	`project_id` int NOT NULL,
 	`remark` TEXT NOT NULL,
+	`created_at` DATETIME NOT NULL,
 	PRIMARY KEY(comment_id)
 );
