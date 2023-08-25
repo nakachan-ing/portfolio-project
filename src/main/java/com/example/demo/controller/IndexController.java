@@ -27,9 +27,11 @@ public class IndexController {
 		List<DurationType> durationList = durationTypeMapper.findAll();
 		DurationType durationType = durationTypeMapper.findById(2).get();
 		List<DurationType> durationList2 = durationTypeMapper.findAllJoinProject();
+		DurationType durationType3 = durationTypeMapper.findByIdJoinProject(2).get();
 		model.addAttribute("durationList", durationList);
 		model.addAttribute("durationType", durationType);
 		model.addAttribute("durationList2", durationList2);
+		model.addAttribute("durationType3", durationType3);
 		return "home";
 	}
 }

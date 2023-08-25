@@ -30,5 +30,18 @@
 </div>
 </div>
 
+<h1>findByIdJoinProject</h1>
+<div th:each="duration3 : ${durationType3}">
+<p th:text="${duration3.durationId}"></p>
+<p th:text="${duration3.durationType}"></p>
+<div th:each="project3 : ${duration3.projectList}">
+<p th:text="${project3.projectId}"></p>
+<p th:text="${project3.projectName}"></p>
+<p th:text="${project3.detail}"></p>
+<p th:text="${project3.created}"></p>
+<p th:text="${project3.updated}"></p>
+</div>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.LevelTypeMapper">
+	<resultMap id="LevelTypeMap"
+		type="com.example.demo.entity.LevelType">
+		<id column="level_id" jdbcType="INTEGER" property="levelId" />
+		<result column="level_type" jdbcType="VARCHAR" property="levelType" />
+		
+		<collection property="projectList"  ofType="com.example.demo.entity.Project" >
+			<id column="project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="project_name" jdbcType="INTEGER" property="projectName" />
+			<result column="detail" jdbcType="VARCHAR" property="detail" />
+			<result column="level_id" jdbcType="INTEGER" property="levelId" />
+			<result column="duration_id" jdbcType="INTEGER" property="durationId" />		
+			<result column="created_at" jdbcType="DATE" property="created" />
+			<result column="updated_at" jdbcType="DATE" property="updated" />
+		</collection>
+		
+	</resultMap>
+	
+	<!-- level_typeの全件取得-->
+	<select id="findAll" resultMap="LevelTypeMap">
+		SELECT level_id, level_type FROM level_types
+	</select>
+
+	<!-- level_typeを一件取得 -->
+	<select id="findById" resultMap="LevelTypeMap">
+		SELECT level_id, level_type FROM level_types
+		WHERE level_id = #{levelId}	
+	</select>
+
+	<!-- level_typeと紐付くprojectを一緒に取得 -->
+	<select id="findAllJoinProject" resultMap="LevelTypeMap">
+		SELECT
+			level_types.level_id,
+			level_types.level_type,
+			projects.project_id,
+			projects.project_name,
+			projects.detail,
+			projects.level_id,
+			projects.duration_id,
+			projects.created_at,
+			projects.updated_at
+		FROM level_types
+		INNER JOIN projects ON level_types.level_id = projects.level_id
+	</select>
+
+	<!-- level_typeと紐付くprojectを一緒にidで取得-->
+	<select id="findByIdJoinProject" resultMap="LevelTypeMap">
+		SELECT
+			level_types.level_id,
+			level_types.level_type,
+			projects.project_id,
+			projects.project_name,
+			projects.detail,
+			projects.level_id,
+			projects.duration_id,
+			projects.created_at,
+			projects.updated_at
+		FROM level_types
+		INNER JOIN projects ON level_types.level_id = projects.level_id
+		WHERE level_types.level_id = #{levelId}
+	</select>
+
+</mapper>

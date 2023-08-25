@@ -42,7 +42,24 @@
 			projects.created_at,
 			projects.updated_at
 		FROM duration_types
-		JOIN projects ON duration_types.duration_id = projects.duration_id
+		INNER JOIN projects ON duration_types.duration_id = projects.duration_id
 	</select>		
+	
+	<!-- duration_typeと紐付くprojectを一緒にidで取得-->
+	<select id="findByIdJoinProject" resultMap="DurationTypeMap">
+		SELECT
+			duration_types.duration_id,
+			duration_types.duration_type,
+			projects.project_id,
+			projects.project_name,
+			projects.detail,
+			projects.level_id,
+			projects.duration_id,
+			projects.created_at,
+			projects.updated_at
+		FROM duration_types
+		INNER JOIN projects ON duration_types.duration_id = projects.duration_id
+		WHERE duration_types.duration_id = #{durationId}
+	</select>
 	
 </mapper>
