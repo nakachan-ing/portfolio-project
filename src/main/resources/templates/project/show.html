@@ -46,7 +46,7 @@
 					<input type="hidden" name="updated" th:value="*{updated}">
 					<input type="submit" class="button is-primary"
 						th:formaction="@{/project/edit}" value="編集する"> <a href="#"
-						class="button is-link is-light" th:href="@{/project/index}">戻る</a>
+						class="button is-link is-light" th:href="@{/}">戻る</a>
 				</form>
 			</div>
 		</div>
@@ -87,11 +87,10 @@
 					</div>
 				</article>
 			</form><br> -->
-
-			<article class="media" th:each="comment,stat:*{commentList}">
+			<article th:if="${comment.commentId} != 0" class="media" th:each="comment,stat:*{commentList}">
 				<div class="media-content">
 					<div class="content">
-						<p th:name="${'commentList[' + stat.index + '].message'}"
+						<p th:name="${'commentList[' + stat.index + '].remark'}"
 							th:text="${comment.remark}"></p>
 					</div>
 					<nav class="level is-mobile">
@@ -120,6 +119,7 @@
 				</div>
 
 			</article>
+			
 		</div>
 	</section>
 </body>
