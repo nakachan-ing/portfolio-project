@@ -47,6 +47,5 @@ public class ProjectController {
 		return "redirect:/";
 	}
 	
-	
 
 }
