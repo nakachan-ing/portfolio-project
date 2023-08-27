@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Project;
 import com.example.demo.form.ProjectForm;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.ProjectService;
 
 @Controller
@@ -23,10 +24,13 @@ import com.example.demo.service.ProjectService;
 public class ProjectController {
 	
 	private final ProjectService projectService;
+	private final CommentService commentService;
 	
 	@Autowired
-	public ProjectController(ProjectService projectService) {
+	public ProjectController(ProjectService projectService,
+			CommentService commentService) {
 		this.projectService = projectService;
+		this.commentService = commentService;
 	}
 	
 	@GetMapping("/")
@@ -87,6 +91,7 @@ public class ProjectController {
 	public String delete(@ModelAttribute ProjectForm projectForm,
 			Model model) {
 		projectService.deleteById(projectForm.getId());
+		commentService.deleteByProjectId(projectForm.getId());
 		return "redirect:/";
 	}
 

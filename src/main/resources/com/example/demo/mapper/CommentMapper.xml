@@ -31,7 +31,7 @@
 		WHERE comment_id = #{commentId}	
 	</select>
 	
-	<!-- duration_typeと紐付くprojectを一件取得 -->
+	<!-- commentと紐付くprojectを一件取得 -->
 	<select id="findByIdJoinProject" resultMap="CommentMap">
 		SELECT
 			comments.comment_id,
@@ -47,6 +47,11 @@
 		FROM comments
 		INNER JOIN projects ON comments.project_id = projects.project_id
 	</select>
+	
+	<!-- projectと紐付くcommentを削除 -->
+	<delete id="deleteByProjectId">
+		DELETE FROM comments WHERE project_id = #{project.projectId}
+	</delete>
 	
 	
 	

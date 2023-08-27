@@ -1,14 +1,11 @@
-package com.example.demo.mapper;
+package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.example.demo.entity.Comment;
 
-@Mapper
-public interface CommentMapper {
+public interface CommentService {
 	
 	List<Comment> findAll();
 	
