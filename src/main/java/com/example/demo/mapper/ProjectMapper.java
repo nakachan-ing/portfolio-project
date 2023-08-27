@@ -19,4 +19,6 @@ public interface ProjectMapper {
 	Optional<Project> findByIdJoin(int id);
 	
 	void updateProject(Project project);
+	
+	void deleteById(int id);
 }

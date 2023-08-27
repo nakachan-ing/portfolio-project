@@ -83,7 +83,7 @@ is-offset-one-fifth">
 					</div>
 					<div class="control">
 						<button class="button is-warning" type="submit"
-							th:formaction="@{/project/delete}">削除する</button>
+							th:formaction="@{/project/__*{id}__/delete}">削除する</button>
 					</div>
 					<div class="control">
 						<a class="button is-link is-light" th:href="@{/project/__*{id}__}">キャンセル</a>

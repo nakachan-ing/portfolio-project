@@ -81,7 +81,13 @@ public class ProjectController {
 			model.addAttribute("projectForm", projectForm);
 			return "project/edit";
 		}
-			
+	}
+	
+	@PostMapping("/project/{id}/delete")
+	public String delete(@ModelAttribute ProjectForm projectForm,
+			Model model) {
+		projectService.deleteById(projectForm.getId());
+		return "redirect:/";
 	}
 
 }

@@ -16,5 +16,7 @@ public interface ProjectService {
 	Optional<Project> findByIdJoin(int id);
 	
 	void updateProject(Project project);
+	
+	void deleteById(int id);
 
 }

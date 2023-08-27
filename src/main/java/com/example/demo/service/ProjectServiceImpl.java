@@ -42,7 +42,11 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void updateProject(Project project) {
 		projectMapper.updateProject(project);
-		
+	}
+
+	@Override
+	public void deleteById(int id) {
+		projectMapper.deleteById(id);		
 	}
 
 }

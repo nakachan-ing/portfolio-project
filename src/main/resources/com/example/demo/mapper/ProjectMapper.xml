@@ -102,7 +102,7 @@
 		WHERE projects.project_id = #{projectId}
 	</select>
 	
-	<!-- projectと一件更新 -->
+	<!-- projectを一件更新 -->
 	<update id="updateProject">
 		UPDATE
 			projects
@@ -114,6 +114,11 @@
 			p_updated_at = #{updated}
 		WHERE project_id = #{projectId}
 	</update>
+	
+	<!-- projectを一件削除 -->
+	<delete id="deleteById">
+		DELETE FROM projects WHERE project_id = #{projectId}
+	</delete>
 
 
 </mapper>
