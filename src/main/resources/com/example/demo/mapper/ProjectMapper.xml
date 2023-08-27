@@ -39,7 +39,7 @@
 			level_id,
 			duration_id,
 			p_created_at,
-			p_updated_at
+			p_updated_at			
 		FROM projects
 	</select>
 	
@@ -101,6 +101,29 @@
 		LEFT JOIN comments ON projects.project_id = comments.project_id
 		WHERE projects.project_id = #{projectId}
 	</select>
+	
+	<!-- projectを一件新規追加 -->
+	<insert id="insertProject">
+		INSERT INTO projects
+		(
+			project_name,
+			detail,
+			level_id,
+			duration_id,
+			p_created_at,
+			p_updated_at
+		)
+		VALUES
+		(
+			#{projectName},
+			#{detail},
+			#{levelId},
+			#{durationId},
+			#{created},
+			#{updated}
+		)
+	</insert>
+	
 	
 	<!-- projectを一件更新 -->
 	<update id="updateProject">

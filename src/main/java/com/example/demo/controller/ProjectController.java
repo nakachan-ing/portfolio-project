@@ -50,6 +50,29 @@ public class ProjectController {
 		return "project/add";
 	}
 	
+	@PostMapping("/project/insert")
+	public String insert(@Validated @ModelAttribute ProjectForm projectForm,
+			BindingResult result,
+			Model model) {
+		if(!result.hasErrors()) {
+			Project project = new Project();
+			project.setProjectId(projectForm.getId());
+			project.setProjectName(projectForm.getProjectName());
+			project.setDetail(projectForm.getDetail());
+			project.setLevelId(projectForm.getLevelId());
+			project.setDurationId(projectForm.getDurationId());
+			project.setCreated(LocalDateTime.now());
+			project.setUpdated(LocalDateTime.now());
+			projectService.insertProject(project);
+			return "redirect:/";
+		} else {
+			model.addAttribute("headerTitle", "投稿する｜Portfolio Community");
+			model.addAttribute("title", "プロジェクトを投稿する");
+			model.addAttribute("projectForm", projectForm);
+			return "project/add";
+		}
+	}
+	
 	@GetMapping("/project/{id}")
 	public String showProject(@PathVariable("id") int id,
 			Model model) {

@@ -38,6 +38,11 @@ public class ProjectServiceImpl implements ProjectService {
 	public Optional<Project> findByIdJoin(int id) {
 		return projectMapper.findByIdJoin(id);
 	}
+	
+	@Override
+	public void insertProject(Project project) {
+		projectMapper.insertProject(project);
+	}
 
 	@Override
 	public void updateProject(Project project) {
