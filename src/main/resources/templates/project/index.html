@@ -27,7 +27,7 @@
 
 		<div class="column">
 		<h3 th:text="${title}" class="title is-3">プロジェクト一覧</h3>
-			<a href="#" class="button is-info">新規投稿する</a><br>
+			<a href="#" th:href="@{/project/add}" class="button is-info">新規投稿する</a><br>
 
 			<div class="sandbox">
 			<article th:each="project : ${projectList}" class="box media">

@@ -42,6 +42,14 @@ public class ProjectController {
 		return "project/index";
 	}
 	
+	@GetMapping("/project/add")
+	public String form(ProjectForm projectForm,
+			Model model) {
+		model.addAttribute("headerTitle", "投稿する｜Portfolio Community");
+		model.addAttribute("title", "プロジェクトを投稿する");
+		return "project/add";
+	}
+	
 	@GetMapping("/project/{id}")
 	public String showProject(@PathVariable("id") int id,
 			Model model) {
