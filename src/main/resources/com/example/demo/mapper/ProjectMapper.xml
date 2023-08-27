@@ -8,8 +8,8 @@
 		<result column="detail" jdbcType="VARCHAR" property="detail" />
 		<result column="level_id" jdbcType="INTEGER" property="levelId" />
 		<result column="duration_id" jdbcType="INTEGER" property="durationId" />		
-		<result column="created_at" jdbcType="DATE" property="created" />
-		<result column="updated_at" jdbcType="DATE" property="updated" />
+		<result column="p_created_at" jdbcType="DATE" property="created" />
+		<result column="p_updated_at" jdbcType="DATE" property="updated" />
 		
 		<collection property="levelType"  ofType="com.example.demo.entity.LevelType" >
 			<id column="level_id" jdbcType="INTEGER" property="levelId" />
@@ -25,7 +25,7 @@
 			<id column="comment_id" jdbcType="INTEGER" property="commentId" />
 			<result column="project_id" jdbcType="INTEGER" property="projectId" />
 			<result column="remark" jdbcType="VARCHAR" property="remark" />
-			<result column="created_at" jdbcType="DATE" property="created" />
+			<result column="c_created_at" jdbcType="DATE" property="created" />
 		</collection>
 		
 	</resultMap>
@@ -38,8 +38,8 @@
 			detail,
 			level_id,
 			duration_id,
-			created_at,
-			updated_at
+			p_created_at,
+			p_updated_at
 		FROM projects
 	</select>
 	
@@ -51,8 +51,8 @@
 			detail,
 			level_id,
 			duration_id,
-			created_at,
-			updated_at
+			p_created_at,
+			p_updated_at
 		FROM projects
 		WHERE project_id = #{projectId}
 	</select>
@@ -65,14 +65,14 @@
 			projects.detail,
 			projects.level_id,
 			projects.duration_id,
-			projects.created_at,
-			projects.updated_at,
+			projects.p_created_at,
+			projects.p_updated_at,
 			level_types.level_type,
 			duration_types.duration_type,
 			comments.comment_id,
 			comments.project_id,
 			comments.remark,
-			comments.created_at
+			comments.c_created_at
 		FROM projects
 		INNER JOIN level_types ON projects.level_id = level_types.level_id
 		INNER JOIN duration_types ON projects.level_id = duration_types.duration_id
@@ -87,14 +87,14 @@
 			projects.detail,
 			projects.level_id,
 			projects.duration_id,
-			projects.created_at,
-			projects.updated_at,
+			projects.p_created_at,
+			projects.p_updated_at,
 			level_types.level_type,
 			duration_types.duration_type,
 			comments.comment_id,
 			comments.project_id,
 			comments.remark,
-			comments.created_at
+			comments.c_created_at
 		FROM projects
 		INNER JOIN level_types ON projects.level_id = level_types.level_id
 		INNER JOIN duration_types ON projects.level_id = duration_types.duration_id

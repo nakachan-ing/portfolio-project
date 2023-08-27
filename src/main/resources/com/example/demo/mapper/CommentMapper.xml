@@ -6,7 +6,7 @@
 		<id column="comment_id" jdbcType="INTEGER" property="commentId" />
 		<result column="project_id" jdbcType="INTEGER" property="projectId" />
 		<result column="remark" jdbcType="VARCHAR" property="remark" />
-		<result column="updated_at" jdbcType="DATE" property="updated" />
+		<result column="c_updated_at" jdbcType="DATE" property="updated" />
 		
 		<collection property="project"  ofType="com.example.demo.entity.Project" >
 			<id column="project_id" jdbcType="INTEGER" property="projectId" />
@@ -14,20 +14,20 @@
 			<result column="detail" jdbcType="VARCHAR" property="detail" />
 			<result column="level_id" jdbcType="INTEGER" property="levelId" />
 			<result column="duration_id" jdbcType="INTEGER" property="durationId" />		
-			<result column="created_at" jdbcType="DATE" property="created" />
-			<result column="updated_at" jdbcType="DATE" property="updated" />
+			<result column="p_created_at" jdbcType="DATE" property="created" />
+			<result column="p_updated_at" jdbcType="DATE" property="updated" />
 		</collection>
 		
 	</resultMap>
 	
 	<!-- commentの全件取得-->
 	<select id="findAll" resultMap="CommentMap">
-		SELECT comment_id, project_id, remark, created_at FROM comments
+		SELECT comment_id, project_id, remark, c_created_at FROM comments
 	</select>
 	
 	<!-- commentを一件取得 -->
 	<select id="findById" resultMap="CommentMap">
-		SELECT comment_id, project_id, remark, created_at FROM comments
+		SELECT comment_id, project_id, remark, c_created_at FROM comments
 		WHERE comment_id = #{commentId}	
 	</select>
 	
@@ -37,13 +37,13 @@
 			comments.comment_id,
 			comments.project_id,
 			comments.remark,
-			comments.created_at,
+			comments.c_created_at,
 			projects.project_name,
 			projects.detail,
 			projects.level_id,
 			projects.duration_id,
-			projects.created_at,
-			projects.updated_at
+			projects.p_created_at,
+			projects.p_updated_at
 		FROM comments
 		INNER JOIN projects ON comments.project_id = projects.project_id
 	</select>

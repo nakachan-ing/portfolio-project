@@ -45,8 +45,8 @@ public class ProjectController {
 	@PostMapping("/")
 	public String goBackHome(Model model) {
 		return "redirect:/";
-		
-		
 	}
+	
+	
 
 }

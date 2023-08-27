@@ -12,8 +12,8 @@
 			<result column="detail" jdbcType="VARCHAR" property="detail" />
 			<result column="level_id" jdbcType="INTEGER" property="levelId" />
 			<result column="duration_id" jdbcType="INTEGER" property="durationId" />		
-			<result column="created_at" jdbcType="DATE" property="created" />
-			<result column="updated_at" jdbcType="DATE" property="updated" />
+			<result column="p_created_at" jdbcType="DATE" property="created" />
+			<result column="p_updated_at" jdbcType="DATE" property="updated" />
 		</collection>
 		
 	</resultMap>
@@ -39,8 +39,8 @@
 			projects.detail,
 			projects.level_id,
 			projects.duration_id,
-			projects.created_at,
-			projects.updated_at
+			projects.p_created_at,
+			projects.p_updated_at
 		FROM level_types
 		INNER JOIN projects ON level_types.level_id = projects.level_id
 	</select>
@@ -55,8 +55,8 @@
 			projects.detail,
 			projects.level_id,
 			projects.duration_id,
-			projects.created_at,
-			projects.updated_at
+			projects.p_created_at,
+			projects.p_updated_at
 		FROM level_types
 		INNER JOIN projects ON level_types.level_id = projects.level_id
 		WHERE level_types.level_id = #{levelId}

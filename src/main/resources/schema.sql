@@ -4,8 +4,8 @@ CREATE TABLE `projects`(
 	`detail` TEXT NOT NULL,
 	`duration_id` INT NOT NULL,
 	`level_id` INT NOT NULL,
-	`created_at` DATETIME NOT NULL,
-	`updated_at` DATETIME NOT NULL,
+	`p_created_at` DATETIME NOT NULL,
+	`p_updated_at` DATETIME NOT NULL,
 	PRIMARY KEY(project_id)
 );
 
@@ -26,6 +26,6 @@ CREATE TABLE `comments`(
 	`comment_id` int NOT NULL AUTO_INCREMENT,
 	`project_id` int NOT NULL,
 	`remark` TEXT NOT NULL,
-	`created_at` DATETIME NOT NULL,
+	`c_created_at` DATETIME NOT NULL,
 	PRIMARY KEY(comment_id)
 );
