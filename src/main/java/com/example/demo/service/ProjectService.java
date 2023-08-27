@@ -14,5 +14,7 @@ public interface ProjectService {
 	List<Project> findAllJoin();
 	
 	Optional<Project> findByIdJoin(int id);
+	
+	void updateProject(Project project);
 
 }

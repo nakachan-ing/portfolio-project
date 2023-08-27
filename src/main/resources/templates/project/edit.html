@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+	th:href="@{/css/bulma.min.css}">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<title th:text="${headerTitle}">Insert title here</title>
+</head>
+<body>
+
+	<div th:replace="~{block/header_nav::header_nav}"></div>
+
+	<section class="columns p-4 m-0">
+
+		<!-- ここにメインコンテンツの部品を配置します。 -->
+		<div class="column is-three-fifths
+is-offset-one-fifth">
+			<h3 th:text="${title}" class="title is-3">プロジェクト編集を編集する</h3>
+			<form method="post" action="#" th:action="@{/project/preview}"
+				th:object="${projectForm}">
+				<!-- タイトル -->
+				<div class="field">
+					<label for="projectName" class="label"><b>プロジェクトのタイトル</b></label>
+					<div class="control">
+						<input class="input" type="text" id="projectName"
+							name="projectName" placeholder="例)アイデア・プロジェクトのタイトル"
+							th:value="*{projectName}">
+					</div>
+					<div th:if="${#fields.hasErrors('projectName')}"
+						th:errors="*{projectName}"></div>
+				</div>
+				<br>
+				<!-- 詳細 -->
+				<div class="field">
+					<label for="detail" class="label"><b>プロジェクトの内容</b></label>
+					<div class="control">
+						<textarea class="textarea" name="detail" id="detail"
+							placeholder="16 lines of textarea" rows="16" th:field="*{detail}"></textarea>
+					</div>
+					<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"></div>
+				</div>
+				<br> <b>プロジェクトのレベル</b>
+				<div class="control">
+					<label for="levelId" class="radio"> <input type="radio"
+						name="levelId" value="1" th:checked="*{levelId == 1}">
+						初学者同士の学習アウトプットとして作ってみたい
+					</label><br> <label for="levelId" class="radio"> <input
+						type="radio" name="levelId" value="2" th:checked="*{levelId == 2}">
+						就活・転職のためにポートフォリオをチームで開発したい
+					</label><br> <label for="levelId" class="radio"> <input
+						type="radio" name="levelId" value="3" th:checked="*{levelId == 3}">
+						仲間と一緒にWebサービスを開発したい
+					</label>
+					<div th:if="${#fields.hasErrors('levelId')}" th:errors="*{levelId}"></div>
+				</div>
+				<br> <b>プロジェクトの期間</b>
+				<div class="control">
+					<label for="durationId" class="radio"> <input type="radio"
+						name="durationId" value="1" th:checked="*{durationId == 1}">
+						短期(〜6ヶ月)
+					</label> <label for="durationId" class="radio"> <input type="radio"
+						name="durationId" value="2" th:checked="*{durationId == 2}">
+						中期(6ヶ月〜1年)
+					</label> <label for="durationId" class="radio"> <input type="radio"
+						name="durationId" value="3" th:checked="*{durationId == 3}">
+						長期(1年以上〜)
+					</label>
+					<div th:if="${#fields.hasErrors('durationId')}"
+						th:errors="*{derationId}"></div>
+				</div>
+				<br>
+
+				<div class="field is-grouped">
+					<div class="control">
+						<input type="hidden" name="id" th:value="*{id}" th:field=*{id}>
+						<input type="hidden" name="created" th:value="*{created}" th:field=*{created}>
+						<button class="button is-info" type="submit"
+							th:formaction="@{/project/__*{id}__/update}">更新する</button>
+					</div>
+					<div class="control">
+						<button class="button is-warning" type="submit"
+							th:formaction="@{/project/delete}">削除する</button>
+					</div>
+					<div class="control">
+						<a class="button is-link is-light" th:href="@{/project/__*{id}__}">キャンセル</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>

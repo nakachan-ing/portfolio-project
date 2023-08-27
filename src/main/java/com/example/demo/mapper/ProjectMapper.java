@@ -17,4 +17,6 @@ public interface ProjectMapper {
 	List<Project> findAllJoin();
 	
 	Optional<Project> findByIdJoin(int id);
+	
+	void updateProject(Project project);
 }

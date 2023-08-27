@@ -39,4 +39,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectMapper.findByIdJoin(id);
 	}
 
+	@Override
+	public void updateProject(Project project) {
+		projectMapper.updateProject(project);
+		
+	}
+
 }

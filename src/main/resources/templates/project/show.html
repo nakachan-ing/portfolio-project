@@ -45,7 +45,7 @@
 					<input type="hidden" name="created" th:value="*{created}">
 					<input type="hidden" name="updated" th:value="*{updated}">
 					<input type="submit" class="button is-primary"
-						th:formaction="@{/project/edit}" value="編集する"> <a href="#"
+						th:formaction="@{/project/__*{projectId}__/edit}" value="編集する"> <a href="#"
 						class="button is-link is-light" th:href="@{/}">戻る</a>
 				</form>
 			</div>

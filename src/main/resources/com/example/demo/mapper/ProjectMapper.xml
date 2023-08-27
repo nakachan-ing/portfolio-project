@@ -101,6 +101,19 @@
 		LEFT JOIN comments ON projects.project_id = comments.project_id
 		WHERE projects.project_id = #{projectId}
 	</select>
+	
+	<!-- projectと一件更新 -->
+	<update id="updateProject">
+		UPDATE
+			projects
+		SET
+			project_name = #{projectName},
+			detail = #{detail},
+			level_id = #{levelId},
+			duration_id = #{durationId},
+			p_updated_at = #{updated}
+		WHERE project_id = #{projectId}
+	</update>
 
 
 </mapper>
