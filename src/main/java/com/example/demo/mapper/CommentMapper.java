@@ -16,6 +16,8 @@ public interface CommentMapper {
 	
 	Optional<Comment> findByIdJoinProject(int id);
 	
+	void insertComment(Comment comment);
+	
 	void deleteByProjectId(int ProjectId);
 
 }

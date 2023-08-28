@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.entity.Comment;
 import com.example.demo.entity.Project;
 import com.example.demo.form.CommentForm;
 import com.example.demo.form.ProjectForm;
@@ -128,6 +129,23 @@ public class ProjectController {
 		projectService.deleteById(projectForm.getId());
 		commentService.deleteByProjectId(projectForm.getId());
 		return "redirect:/";
+	}
+	
+	@PostMapping("/project/{id}/comment")
+	public String postComment(@Validated @ModelAttribute CommentForm commentForm,
+			BindingResult result,
+			Model model) {
+		if(!result.hasErrors()) {
+			Comment comment = new Comment();
+			comment.setCommentId(commentForm.getId());
+			comment.setProjectId(commentForm.getProjectId());
+			comment.setRemark(commentForm.getRemark());
+			comment.setCreated(LocalDateTime.now());
+			commentService.insertComment(comment);
+			return "redirect:/project/" + comment.getProjectId();
+		} else {
+			return "redirect:/";
+		}
 	}
 
 }

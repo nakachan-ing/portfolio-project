@@ -48,6 +48,22 @@
 		INNER JOIN projects ON comments.project_id = projects.project_id
 	</select>
 	
+	<!-- commentを一件新規追加 -->
+	<insert id="insertComment">
+		INSERT INTO comments
+		(
+			project_id,
+			remark,
+			c_created_at
+		)
+		VALUES
+		(
+			#{projectId},
+			#{remark},
+			#{created}
+		)
+	</insert>
+	
 	<!-- projectと紐付くcommentを削除 -->
 	<delete id="deleteByProjectId">
 		DELETE FROM comments WHERE project_id = #{project.projectId}

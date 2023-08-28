@@ -73,7 +73,7 @@
 								<input type="hidden" name="projectId" id="projectId"
 									th:value="${project.projectId}">
 								<button class="button" type="submit"
-									th:formaction="@{/project/comment}">コメントする</button>
+									th:formaction="@{/project/__*{projectId}__/comment}">コメントする</button>
 							</p>
 							<p class="control" th:unless="${commentForm.newComment}">
 								<input type="hidden" name="id" id="id" th:value="*{id}">

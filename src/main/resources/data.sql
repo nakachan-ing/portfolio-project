@@ -17,7 +17,7 @@ VALUES('project1', 'detail1', 1, 2, '2023-08-01 13:00:00', '2023-08-01 13:00:00'
 INSERT INTO projects(project_name, detail, level_id, duration_id, p_created_at, p_updated_at)
 VALUES('project2', 'detail2', 2, 3, '2023-08-02 14:00:00', '2023-08-04 17:15:00');
 
-INSERT INTO comments(comment_id, project_id, remark, c_created_at)
-VALUES(1, 1, 'いいですね', '2023-08-01 13:00:00');
-INSERT INTO comments(comment_id, project_id, remark, c_created_at)
-VALUES(2, 1, 'Great!', '2023-08-01 17:00:00');
+INSERT INTO comments(project_id, remark, c_created_at)
+VALUES(1, 'いいですね', '2023-08-01 13:00:00');
+INSERT INTO comments(project_id, remark, c_created_at)
+VALUES(1, 'Great!', '2023-08-01 17:00:00');
