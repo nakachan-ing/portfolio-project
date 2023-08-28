@@ -64,6 +64,15 @@
 		)
 	</insert>
 	
+	<!-- commentを一件更新-->
+	<update id="updateComment">
+		UPDATE
+			comments
+		SET
+			remark = #{remark}
+		WHERE comment_id = #{commentId}
+	</update>
+	
 	<!-- projectと紐付くcommentを削除 -->
 	<delete id="deleteByProjectId">
 		DELETE FROM comments WHERE project_id = #{project.projectId}

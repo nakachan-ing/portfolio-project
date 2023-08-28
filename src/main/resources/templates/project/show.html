@@ -80,7 +80,7 @@
 								<input type="hidden" name="projectId" id="projectId"
 									th:value="${project.projectId}">
 								<button class="button" type="submit"
-									th:formaction="@{/project/comment/update}">保存する</button>
+									th:formaction="@{/project/__*{projectId}__/comment/update}">保存する</button>
 
 							</p>
 						</div>

@@ -163,5 +163,21 @@ public class ProjectController {
 		model.addAttribute("commentForm", commentForm);
 		return "/project/show";
 	}
+	
+	@PostMapping("/project/{id}/comment/update")
+	public String updateComment(@Validated @ModelAttribute CommentForm commentForm,
+			BindingResult result,
+			Model model) {
+		if(!result.hasErrors()) {
+			Comment comment = new Comment();
+			comment.setCommentId(commentForm.getId());
+			comment.setProjectId(commentForm.getProjectId());
+			comment.setRemark(commentForm.getRemark());
+			commentService.updateComment(comment);
+			return "redirect:/project/" + comment.getProjectId();
+		} else {
+			return "redirect:/";
+		}
+	}
 
 }

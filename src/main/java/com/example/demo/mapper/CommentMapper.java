@@ -18,6 +18,8 @@ public interface CommentMapper {
 	
 	void insertComment(Comment comment);
 	
+	void updateComment(Comment comment);
+	
 	void deleteByProjectId(int ProjectId);
 
 }
