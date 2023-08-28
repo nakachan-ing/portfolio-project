@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Project;
+import com.example.demo.form.CommentForm;
 import com.example.demo.form.ProjectForm;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.ProjectService;
@@ -75,10 +76,13 @@ public class ProjectController {
 	
 	@GetMapping("/project/{id}")
 	public String showProject(@PathVariable("id") int id,
+			CommentForm commentForm,
 			Model model) {
 		Project project = projectService.findByIdJoin(id).get();
+		commentForm.setNewComment(true);
 		model.addAttribute("headerTitle", project.getProjectName());
 		model.addAttribute("project", project);
+		model.addAttribute("commentForm", commentForm);
 		return "/project/show";
 	}
 	

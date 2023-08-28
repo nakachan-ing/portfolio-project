@@ -54,7 +54,7 @@
 
 		<div class="submenu column">
 
-			<!-- <form method="post" action="#"
+			<form method="post" action="#"
 				th:action="${commentForm.isNewComment} ? @{/project/comment} : @{/project/update}"
 				th:object="${commentForm}">
 				<article class="media">
@@ -62,23 +62,23 @@
 					<div class="media-content">
 						<div class="field">
 							<p class="control">
-								<textarea class="textarea" name="message" id="message"
-									placeholder="Add a comment..." th:field="*{message}"></textarea>
+								<textarea class="textarea" name="remark" id="remark"
+									placeholder="Add a comment..." th:field="*{remark}"></textarea>
 							</p>
-							<div th:if="${#fields.hasErrors('message')}"
-								th:errors="*{message}"></div>
+							<div th:if="${#fields.hasErrors('remark')}"
+								th:errors="*{remark}"></div>
 						</div>
 						<div class="field">
 							<p class="control" th:if="${commentForm.newComment}">
 								<input type="hidden" name="projectId" id="projectId"
-									th:value="${projectForm.id}">
+									th:value="${project.projectId}">
 								<button class="button" type="submit"
 									th:formaction="@{/project/comment}">コメントする</button>
 							</p>
 							<p class="control" th:unless="${commentForm.newComment}">
 								<input type="hidden" name="id" id="id" th:value="*{id}">
 								<input type="hidden" name="projectId" id="projectId"
-									th:value="${projectForm.id}">
+									th:value="${project.projectId}">
 								<button class="button" type="submit"
 									th:formaction="@{/project/comment/update}">保存する</button>
 
@@ -86,7 +86,7 @@
 						</div>
 					</div>
 				</article>
-			</form><br> -->
+			</form><br>
 			<article th:if="${comment.commentId} != 0" class="media" th:each="comment,stat:*{commentList}">
 				<div class="media-content">
 					<div class="content">
