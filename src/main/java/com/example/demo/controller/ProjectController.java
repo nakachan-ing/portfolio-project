@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Comment;
 import com.example.demo.entity.Project;
@@ -146,6 +147,21 @@ public class ProjectController {
 		} else {
 			return "redirect:/";
 		}
+	}
+	
+	@PostMapping("/project/{id}/comment/edit")
+	public String editComment(@RequestParam(name="commentId") int commentId,
+			@RequestParam(name="projectId") int projectId,
+			Model model) {
+		Comment comment = commentService.findById(commentId).get();
+		CommentForm commentForm = new CommentForm();
+		commentForm.setId(commentId);
+		commentForm.setProjectId(projectId);
+		commentForm.setRemark(comment.getRemark());
+		Project project = projectService.findByIdJoin(projectId).get();
+		model.addAttribute("project", project);
+		model.addAttribute("commentForm", commentForm);
+		return "/project/show";
 	}
 
 }

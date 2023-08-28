@@ -112,7 +112,7 @@
 							th:value="${comment.commentId}"> <input type="hidden"
 							name="projectId" id="projectId" th:value="*{projectId}">
 						<button class="button is-text" type="submit"
-							th:formaction="@{/project/comment/edit}">編集する</button>
+							th:formaction="@{/project/__*{projectId}__/comment/edit}">編集する</button>
 						<button class="button is-text" type="submit"
 							th:formaction="@{/project/comment/delete}">削除する</button>
 					</form>
