@@ -45,6 +45,11 @@ public class CommentServiceImpl implements CommentService {
 	}
 	
 	@Override
+	public void deleteById(int id) {
+		commentMapper.deleteById(id);
+	}
+	
+	@Override
 	public void deleteByProjectId(int ProjectId) {
 		commentMapper.deleteByProjectId(ProjectId);
 	}

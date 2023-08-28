@@ -73,6 +73,11 @@
 		WHERE comment_id = #{commentId}
 	</update>
 	
+	<!-- commentをidで削除-->
+	<delete id="deleteById">
+		DELETE FROM comments WHERE comment_id = #{commentId}
+	</delete>
+	
 	<!-- projectと紐付くcommentを削除 -->
 	<delete id="deleteByProjectId">
 		DELETE FROM comments WHERE project_id = #{project.projectId}

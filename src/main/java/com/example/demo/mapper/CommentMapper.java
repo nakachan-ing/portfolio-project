@@ -20,6 +20,8 @@ public interface CommentMapper {
 	
 	void updateComment(Comment comment);
 	
+	void deleteById(int id);
+	
 	void deleteByProjectId(int ProjectId);
 
 }

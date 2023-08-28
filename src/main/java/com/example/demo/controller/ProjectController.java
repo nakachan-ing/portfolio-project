@@ -179,5 +179,13 @@ public class ProjectController {
 			return "redirect:/";
 		}
 	}
+	
+	@PostMapping("/project/{id}/comment/delete")
+	public String deleteComment(@RequestParam(name="commentId") int commentId,
+			@RequestParam(name="projectId") int projectId,
+			Model model) {
+		commentService.deleteById(commentId);
+		return "redirect:/project/" + projectId;
+	}
 
 }
