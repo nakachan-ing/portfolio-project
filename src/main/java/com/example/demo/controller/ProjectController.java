@@ -42,7 +42,7 @@ public class ProjectController {
 		model.addAttribute("headerTitle", "Portfolio Community - 共同制作プラットフォーム");
 		model.addAttribute("projectList", projectList);
 		model.addAttribute("title", "プロジェクト一覧");
-		return "project/index";
+		return "project/index_new";
 	}
 	
 	@GetMapping("/project/add")
@@ -85,7 +85,7 @@ public class ProjectController {
 		model.addAttribute("headerTitle", project.getProjectName());
 		model.addAttribute("project", project);
 		model.addAttribute("commentForm", commentForm);
-		return "/project/show";
+		return "/project/show_new";
 	}
 	
 	@PostMapping("/")
@@ -161,7 +161,7 @@ public class ProjectController {
 		Project project = projectService.findByIdJoin(projectId).get();
 		model.addAttribute("project", project);
 		model.addAttribute("commentForm", commentForm);
-		return "/project/show";
+		return "/project/show_new";
 	}
 	
 	@PostMapping("/project/{id}/comment/update")
