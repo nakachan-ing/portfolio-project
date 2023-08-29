@@ -22,6 +22,8 @@
 				<article class="tile is-child box">
 					<p class="title is-5">プロジェクトの内容</p>
 					<div class="content">
+
+						
 						<p th:text="*{detail}"></p>
 					</div>
 					<p class="title is-5">プロジェクトのレベル</p>
@@ -41,12 +43,13 @@
 						type="hidden" name="projectName" th:value="*{projectName}">
 					<input type="hidden" name="detail" th:value="*{detail}"> <input
 						type="hidden" name="levelId" th:value="*{LevelType.levelId}">
-					<input type="hidden" name="durationId" th:value="*{durationType.durationId}">
-					<input type="hidden" name="created" th:value="*{created}">
-					<input type="hidden" name="updated" th:value="*{updated}">
-					<input type="submit" class="button is-primary"
-						th:formaction="@{/project/__*{projectId}__/edit}" value="編集する"> <a href="#"
-						class="button is-link is-light" th:href="@{/}">戻る</a>
+					<input type="hidden" name="durationId"
+						th:value="*{durationType.durationId}"> <input
+						type="hidden" name="created" th:value="*{created}"> <input
+						type="hidden" name="updated" th:value="*{updated}"> <input
+						type="submit" class="button is-primary"
+						th:formaction="@{/project/__*{projectId}__/edit}" value="編集する">
+					<a href="#" class="button is-link is-light" th:href="@{/}">戻る</a>
 				</form>
 			</div>
 		</div>
@@ -65,8 +68,7 @@
 								<textarea class="textarea" name="remark" id="remark"
 									placeholder="Add a comment..." th:field="*{remark}"></textarea>
 							</p>
-							<div th:if="${#fields.hasErrors('remark')}"
-								th:errors="*{remark}"></div>
+							<div th:if="${#fields.hasErrors('remark')}" th:errors="*{remark}"></div>
 						</div>
 						<div class="field">
 							<p class="control" th:if="${commentForm.newComment}">
@@ -86,8 +88,10 @@
 						</div>
 					</div>
 				</article>
-			</form><br>
-			<article th:if="${comment.commentId} != 0" class="media" th:each="comment,stat:*{commentList}">
+			</form>
+			<br>
+			<article th:if="${comment.commentId} != 0" class="media"
+				th:each="comment,stat:*{commentList}">
 				<div class="media-content">
 					<div class="content">
 						<p th:name="${'commentList[' + stat.index + '].remark'}"
@@ -101,7 +105,8 @@
 									class="fas fa-retweet"></i></span>
 							</a> <a class="level-item"> <span class="icon is-small"><i
 									class="fas fa-heart"></i></span>
-							</a> <p th:text="${comment.created}"></p>
+							</a>
+							<p th:text="${comment.created}"></p>
 						</div>
 					</nav>
 
@@ -119,7 +124,7 @@
 				</div>
 
 			</article>
-			
+
 		</div>
 	</section>
 </body>

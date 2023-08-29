@@ -21,17 +21,20 @@
 
 				<div class="column col-12 col-mx-auto m-2 p-2 bg-gray">
 					<h5>【プロジェクトの内容】</h5>
-					<div class="content">
-						<p th:text="*{detail}"></p>
+					<div class="content m-2 p-2">
+						<th:block th:each="str, stat : *{detail.split('\r\n|\r|\n', -1)}">
+					        <th:block th:text="${str}"/>
+					        <br th:if="${!stat.last}"/>
+					    </th:block>
 					</div>
 
 					<h5>【プロジェクトのレベル】</h5>
-					<div class="content">
+					<div class="content m-2 p-2">
 						<p th:text="*{levelType.levelType}"></p>
 					</div>
 
 					<h5>【プロジェクトの期間】</h5>
-					<div class="content">
+					<div class="content m-2 p-2">
 						<p th:text="*{durationType.durationType}"></p>
 					</div>
 				</div>
