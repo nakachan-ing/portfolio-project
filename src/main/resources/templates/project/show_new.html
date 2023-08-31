@@ -15,7 +15,7 @@
 	<div th:replace="~{block/header_navnew::header_nav}"></div>
 
 	<div class="container" th:object="${project}">
-		<div class="columns">
+		<section class="columns">
 			<div class="column col-6 col-mx-auto">
 				<h3 th:text="*{projectName}" class="m-2 p-2">プロジェクト名</h3>
 
@@ -111,7 +111,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 </body>
 </html>

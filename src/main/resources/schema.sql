@@ -29,3 +29,39 @@ CREATE TABLE `comments`(
 	`c_created_at` DATETIME NOT NULL,
 	PRIMARY KEY(comment_id)
 );
+
+CREATE TABLE `language_types`(
+  `language_id` int NOT NULL AUTO_INCREMENT,
+  `language_type` VARCHAR(100) NOT NULL,
+    PRIMARY KEY(language_id)
+);
+
+CREATE TABLE `database_types`(
+  `database_id` int NOT NULL AUTO_INCREMENT,
+  `database_type` VARCHAR(100) NOT NULL,
+    PRIMARY KEY(database_id)
+);
+
+CREATE TABLE `infrastructure_types`(
+  `infrastructure_id` int NOT NULL AUTO_INCREMENT,
+  `infrastructure_type` VARCHAR(100) NOT NULL,
+    PRIMARY KEY(infrastructure_id)
+);
+
+CREATE TABLE `framework_types`(
+  `framework_id` int NOT NULL AUTO_INCREMENT,
+  `framework_type` VARCHAR(100) NOT NULL,
+    PRIMARY KEY(framework_id)
+);
+
+CREATE TABLE `management_types`(
+  `management_id` int NOT NULL AUTO_INCREMENT,
+  `management_type` VARCHAR(100) NOT NULL,
+    PRIMARY KEY(management_id)
+);
+
+CREATE TABLE `communication_types`(
+  `communication_id` int NOT NULL AUTO_INCREMENT,
+  `communication_type` VARCHAR(100) NOT NULL,
+    PRIMARY KEY(communication_id)
+);

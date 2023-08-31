@@ -20,20 +20,14 @@
 
 			<div class="tile is-parent">
 				<article class="tile is-child box">
-					<p class="title is-5">プロジェクトの内容</p>
-					
-					
+					<p class="title is-5">プロジェクトの内容</p>	
 					<div class="content m-2 p-2">
 						<th:block th:each="str, stat : *{detail.split('\r\n|\r|\n', -1)}">
 					        <th:block th:text="${str}"/>
 					        <br th:if="${!stat.last}"/>
 					    </th:block>
 					</div>
-					
-					
-
-						
-						
+											
 					<p class="title is-5">プロジェクトのレベル</p>
 					<div class="content">
 						<p th:text="*{levelType.levelType}"></p>
