@@ -30,7 +30,8 @@
 			<a href="#" th:href="@{/project/add}" class="button is-info">新規投稿する</a><br>
 
 			<div class="sandbox">
-			<article th:each="project : ${projectList}" class="box media">
+			<div class="is-flex is-flex-wrap-wrap is-justify-content-center">
+			<article th:each="project : ${projectList}" class="box media m-2">
 				<figure class="media-left">
 					<p class="image is-64x64">
 						<img src="sample01.png">
@@ -39,7 +40,13 @@
 				<div class="media-content">
 					<div class="content">
 						<h4 th:text="${project.projectName}" class="title is-4">プロジェクト名</h4>
-						<p th:text="${project.detail}">プロジェクトの内容</p>
+						
+						<div class="content m-2 p-2">
+						<th:block th:each="str, stat : ${project.detail.split('\r\n|\r|\n', -1)}">
+					        <th:block th:text="${str}"/>
+					        <br th:if="${!stat.last}"/>
+					    </th:block>
+						</div>
 						<p>
 							投稿日： <small th:text="${project.created}"><a><i
 									class="far fa-thumbs-up"></i></a> · <a>返信</a> · 3 時間前</small>
@@ -51,9 +58,11 @@
 				</div>
 			</article>
 			</div>
+			</div>
 		</div>
 		
 	</section>
-	<script th:src="@{/js/bulma.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </body>
 </html>
