@@ -65,3 +65,10 @@ CREATE TABLE `communication_types`(
   `communication_type` VARCHAR(100) NOT NULL,
     PRIMARY KEY(communication_id)
 );
+
+CREATE TABLE `project_languages`(
+	`pl_id` int NOT NULL AUTO_INCREMENT,
+	`project_id` int NOT NULL,
+	`language_id` int NOT NULL,
+	PRIMARY KEY(pl_id)
+);

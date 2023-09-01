@@ -70,6 +70,13 @@ is-offset-one-fifth">
 	  <div th:if="${#fields.hasErrors('durationId')}" th:errors="*{durationId}"></div>
 	</div><br>
 	
+	<b>使用言語</b>
+	<div class="control">
+		<label th:each="language, stat : ${languageList}" class="checkbox m-2">
+		  <input type="checkbox" name="languageId" th:value="${language.languageId}" th:text="${language.languageType}">
+		</label>
+	</div>
+	
 	<div class="field is-grouped">
   <div class="control">
     <button class="button is-info" type="submit" th:formaction="@{/project/insert}">投稿する</button>

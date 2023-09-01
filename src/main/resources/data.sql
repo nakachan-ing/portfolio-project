@@ -84,3 +84,12 @@ INSERT INTO communication_types(communication_type)VALUES('Slack');
 INSERT INTO communication_types(communication_type)VALUES('Notion');
 INSERT INTO communication_types(communication_type)VALUES('ChatWork');
 INSERT INTO communication_types(communication_type)VALUES('その他');
+
+INSERT INTO project_languages(project_id, language_id)
+VALUES(1, 1);
+INSERT INTO project_languages(project_id, language_id)
+VALUES(1, 10);
+INSERT INTO project_languages(project_id, language_id)
+VALUES(2, 3);
+INSERT INTO project_languages(project_id, language_id)
+VALUES(2, 11);

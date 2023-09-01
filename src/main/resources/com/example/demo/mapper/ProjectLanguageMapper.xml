@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProjectLanguageMapper">
+	<resultMap id="ProjectLanguageMap"
+		type="com.example.demo.entity.ProjectLanguage">
+		<id column="pl_id" jdbcType="INTEGER" property="plId" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="language_id" jdbcType="INTEGER" property="languageId" />
+	</resultMap>
+	
+	<!-- project_languageを一件新規追加 -->
+	<insert id="insertProjectLanguage">
+		INSERT INTO project_languages
+		(
+			project_id,
+			language_id
+		)
+		VALUES
+		(
+			#{projectId},
+			#{languageId}
+		)
+	</insert>
+
+</mapper>

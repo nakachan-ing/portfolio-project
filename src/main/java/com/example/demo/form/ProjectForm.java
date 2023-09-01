@@ -1,6 +1,6 @@
 package com.example.demo.form;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -34,8 +34,8 @@ public class ProjectForm {
 	@NotNull
 	private int durationId;
 	
-	private LocalDateTime created;
+	private LocalDate created;
 	
-	private LocalDateTime updated;
+	private LocalDate updated;
 
 }

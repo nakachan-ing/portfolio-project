@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import lombok.Data;
@@ -17,9 +17,9 @@ public class Project {
 	
 	private int durationId;
 	
-	private LocalDateTime created;
+	private LocalDate created;
 	
-	private LocalDateTime updated;
+	private LocalDate updated;
 	
 	private LevelType levelType;
 	

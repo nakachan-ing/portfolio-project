@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Comment;
+import com.example.demo.entity.LanguageType;
 import com.example.demo.entity.Project;
 import com.example.demo.form.CommentForm;
 import com.example.demo.form.ProjectForm;
+import com.example.demo.form.ProjectLanguageForm;
+import com.example.demo.mapper.LanguageTypeMapper;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.ProjectService;
 
@@ -28,12 +32,15 @@ public class ProjectController {
 	
 	private final ProjectService projectService;
 	private final CommentService commentService;
+	private final LanguageTypeMapper languageTypeMapper;
 	
 	@Autowired
 	public ProjectController(ProjectService projectService,
-			CommentService commentService) {
+			CommentService commentService,
+			LanguageTypeMapper languageTypeMapper) {
 		this.projectService = projectService;
 		this.commentService = commentService;
+		this.languageTypeMapper = languageTypeMapper;
 	}
 	
 	@GetMapping("/")
@@ -47,9 +54,12 @@ public class ProjectController {
 	
 	@GetMapping("/project/add")
 	public String form(ProjectForm projectForm,
+			ProjectLanguageForm projectLanguageForm,
 			Model model) {
+		List<LanguageType> languageList = languageTypeMapper.findAll();
 		model.addAttribute("headerTitle", "投稿する｜Portfolio Community");
 		model.addAttribute("title", "プロジェクトを投稿する");
+		model.addAttribute("languageList", languageList);
 		return "project/add";
 	}
 	
@@ -64,8 +74,8 @@ public class ProjectController {
 			project.setDetail(projectForm.getDetail());
 			project.setLevelId(projectForm.getLevelId());
 			project.setDurationId(projectForm.getDurationId());
-			project.setCreated(LocalDateTime.now());
-			project.setUpdated(LocalDateTime.now());
+			project.setCreated(LocalDate.now());
+			project.setUpdated(LocalDate.now());
 			projectService.insertProject(project);
 			return "redirect:/";
 		} else {
@@ -113,7 +123,7 @@ public class ProjectController {
 			project.setLevelId(projectForm.getLevelId());
 			project.setDurationId(projectForm.getDurationId());
 			project.setCreated(projectForm.getCreated());
-			project.setUpdated(LocalDateTime.now());
+			project.setUpdated(LocalDate.now());
 			projectService.updateProject(project);
 			return "redirect:/project/" + project.getProjectId();
 		} else {
