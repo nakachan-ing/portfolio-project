@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Comment;
 import com.example.demo.entity.LanguageType;
 import com.example.demo.entity.Project;
+import com.example.demo.entity.ProjectLanguage;
 import com.example.demo.form.CommentForm;
 import com.example.demo.form.ProjectForm;
 import com.example.demo.form.ProjectLanguageForm;
 import com.example.demo.mapper.LanguageTypeMapper;
 import com.example.demo.service.CommentService;
+import com.example.demo.service.ProjectLanguageService;
 import com.example.demo.service.ProjectService;
 
 @Controller
@@ -33,14 +35,17 @@ public class ProjectController {
 	private final ProjectService projectService;
 	private final CommentService commentService;
 	private final LanguageTypeMapper languageTypeMapper;
+	private final ProjectLanguageService projectLanguageService;
 	
 	@Autowired
 	public ProjectController(ProjectService projectService,
 			CommentService commentService,
-			LanguageTypeMapper languageTypeMapper) {
+			LanguageTypeMapper languageTypeMapper,
+			ProjectLanguageService projectLanguageService) {
 		this.projectService = projectService;
 		this.commentService = commentService;
 		this.languageTypeMapper = languageTypeMapper;
+		this.projectLanguageService = projectLanguageService;
 	}
 	
 	@GetMapping("/")
@@ -65,6 +70,7 @@ public class ProjectController {
 	
 	@PostMapping("/project/insert")
 	public String insert(@Validated @ModelAttribute ProjectForm projectForm,
+			@Validated @ModelAttribute ProjectLanguageForm projectLanguageForm,
 			BindingResult result,
 			Model model) {
 		if(!result.hasErrors()) {
@@ -77,6 +83,16 @@ public class ProjectController {
 			project.setCreated(LocalDate.now());
 			project.setUpdated(LocalDate.now());
 			projectService.insertProject(project);
+			System.out.println("project_id：" + project.getProjectId());
+			
+			for (int languageId : projectLanguageForm.getLanguageIdList()) {
+				System.out.println(languageId); 
+				ProjectLanguage projectLanguage = new ProjectLanguage();
+				projectLanguage.setProjectId(project.getProjectId());
+				projectLanguage.setLanguageId(languageId);
+				projectLanguageService.insertProjectLanguage(projectLanguage);
+			}
+			
 			return "redirect:/";
 		} else {
 			model.addAttribute("headerTitle", "投稿する｜Portfolio Community");

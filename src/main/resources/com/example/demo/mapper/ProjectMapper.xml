@@ -103,7 +103,7 @@
 	</select>
 	
 	<!-- projectを一件新規追加 -->
-	<insert id="insertProject">
+	<insert id="insertProject" useGeneratedKeys="true" keyProperty="projectId">
 		INSERT INTO projects
 		(
 			project_name,

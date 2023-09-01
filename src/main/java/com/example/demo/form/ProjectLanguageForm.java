@@ -1,7 +1,5 @@
 package com.example.demo.form;
 
-import org.hibernate.validator.constraints.Range;
-
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +15,8 @@ public class ProjectLanguageForm {
 	@NotNull
 	private int projectId;
 	
-	@Range(min=1, max=24)
-	@NotNull
 	private int languageId;
+	
+	private int[] languageIdList;
+	
 }
