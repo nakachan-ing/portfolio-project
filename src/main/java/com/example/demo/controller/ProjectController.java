@@ -24,8 +24,12 @@ import com.example.demo.entity.InfrastructureType;
 import com.example.demo.entity.LanguageType;
 import com.example.demo.entity.ManagementType;
 import com.example.demo.entity.Project;
+import com.example.demo.entity.ProjectCommunication;
 import com.example.demo.entity.ProjectDatabase;
+import com.example.demo.entity.ProjectFramework;
+import com.example.demo.entity.ProjectInfrastructure;
 import com.example.demo.entity.ProjectLanguage;
+import com.example.demo.entity.ProjectManagement;
 import com.example.demo.form.CommentForm;
 import com.example.demo.form.ProjectCommunicationForm;
 import com.example.demo.form.ProjectDatabaseForm;
@@ -138,6 +142,10 @@ public class ProjectController {
 	public String insert(@Validated @ModelAttribute ProjectForm projectForm,
 			@Validated @ModelAttribute ProjectLanguageForm projectLanguageForm,
 			@Validated @ModelAttribute ProjectDatabaseForm projectDatabaseForm,
+			@Validated @ModelAttribute ProjectInfrastructureForm projectInfrastructureForm,
+			@Validated @ModelAttribute ProjectFrameworkForm projectFrameworkForm,
+			@Validated @ModelAttribute ProjectManagementForm projectManagementForm,
+			@Validated @ModelAttribute ProjectCommunicationForm projectCommunicationForm,
 			BindingResult result,
 			Model model) {
 		if(!result.hasErrors()) {
@@ -166,6 +174,38 @@ public class ProjectController {
 				projectDatabase.setProjectId(project.getProjectId());
 				projectDatabase.setDatabaseId(databaseId);
 				projectDatabaseService.insertProjectDatabase(projectDatabase);
+			}
+			
+			for (int infrastructureId : projectInfrastructureForm.getInfrastructureIdList()) {
+				System.out.println(infrastructureId); 
+				ProjectInfrastructure projectInfrastructure = new ProjectInfrastructure();
+				projectInfrastructure.setProjectId(project.getProjectId());
+				projectInfrastructure.setInfrastructureId(infrastructureId);
+				projectInfrastructureService.insertProjectInfrastructure(projectInfrastructure);
+			}
+			
+			for (int frameworkId : projectFrameworkForm.getFrameworkIdList()) {
+				System.out.println(frameworkId); 
+				ProjectFramework projectFramework = new ProjectFramework();
+				projectFramework.setProjectId(project.getProjectId());
+				projectFramework.setFrameworkId(frameworkId);
+				projectFrameworkService.insertProjectFramework(projectFramework);
+			}
+			
+			for (int managementId : projectManagementForm.getManagementIdList()) {
+				System.out.println(managementId); 
+				ProjectManagement projectManagement = new ProjectManagement();
+				projectManagement.setProjectId(project.getProjectId());
+				projectManagement.setManagementId(managementId);
+				projectManagementService.insertProjectManagement(projectManagement);
+			}
+			
+			for (int communicationId : projectCommunicationForm.getCommunicationIdList()) {
+				System.out.println(communicationId);
+				ProjectCommunication projectCommunication = new ProjectCommunication();
+				projectCommunication.setProjectId(project.getProjectId());
+				projectCommunication.setCommunicationId(communicationId);
+				projectCommunicationService.insertProjectCommunication(projectCommunication);
 			}
 			
 			return "redirect:/";
