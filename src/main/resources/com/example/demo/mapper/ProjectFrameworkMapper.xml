@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProjectFrameworkMapper">
+	<resultMap id="ProjectFrameworkMap"
+		type="com.example.demo.entity.ProjectFramework">
+		<id column="pf_id" jdbcType="INTEGER" property="pfId" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="framework_id" jdbcType="INTEGER" property="frameworkId" />
+	</resultMap>
+	
+	<!-- project_frameworkを一件新規追加 -->
+	<insert id="insertProjectFramework">
+		INSERT INTO project_frameworks
+		(
+			project_id,
+			framework_id
+		)
+		VALUES
+		(
+			#{projectId},
+			#{frameworkId}
+		)
+	</insert>
+
+</mapper>

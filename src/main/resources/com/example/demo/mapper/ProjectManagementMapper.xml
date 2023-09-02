@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProjectManagementMapper">
+	<resultMap id="ProjectManagementMap"
+		type="com.example.demo.entity.ProjectManagement">
+		<id column="pm_id" jdbcType="INTEGER" property="pmId" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="management_id" jdbcType="INTEGER" property="managementId" />
+	</resultMap>
+	
+	<!-- project_managementを一件新規追加 -->
+	<insert id="insertProjectManagement">
+		INSERT INTO project_managements
+		(
+			project_id,
+			management_id
+		)
+		VALUES
+		(
+			#{projectId},
+			#{managementId}
+		)
+	</insert>
+
+</mapper>

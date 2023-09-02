@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ProjectInfrastructureMapper">
+	<resultMap id="ProjectInfrastructureMap"
+		type="com.example.demo.entity.ProjectInfrastructure">
+		<id column="pi_id" jdbcType="INTEGER" property="piId" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="infrastructure_id" jdbcType="INTEGER" property="infrastructureId" />
+	</resultMap>
+	
+	<!-- project_infrastructureを一件新規追加 -->
+	<insert id="insertProjectInfrastructure">
+		INSERT INTO project_infrastructures
+		(
+			project_id,
+			infrastructure_id
+		)
+		VALUES
+		(
+			#{projectId},
+			#{infrastructureId}
+		)
+	</insert>
+
+</mapper>
