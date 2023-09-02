@@ -17,20 +17,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Comment;
+import com.example.demo.entity.CommunicationType;
 import com.example.demo.entity.DatabaseType;
+import com.example.demo.entity.FrameworkType;
+import com.example.demo.entity.InfrastructureType;
 import com.example.demo.entity.LanguageType;
+import com.example.demo.entity.ManagementType;
 import com.example.demo.entity.Project;
 import com.example.demo.entity.ProjectDatabase;
 import com.example.demo.entity.ProjectLanguage;
 import com.example.demo.form.CommentForm;
+import com.example.demo.form.ProjectCommunicationForm;
 import com.example.demo.form.ProjectDatabaseForm;
 import com.example.demo.form.ProjectForm;
+import com.example.demo.form.ProjectFrameworkForm;
+import com.example.demo.form.ProjectInfrastructureForm;
 import com.example.demo.form.ProjectLanguageForm;
+import com.example.demo.form.ProjectManagementForm;
+import com.example.demo.mapper.CommunicationTypeMapper;
 import com.example.demo.mapper.DatabaseTypeMapper;
+import com.example.demo.mapper.FrameworkTypeMapper;
+import com.example.demo.mapper.InfrastructureTypeMapper;
 import com.example.demo.mapper.LanguageTypeMapper;
+import com.example.demo.mapper.ManagementTypeMapper;
 import com.example.demo.service.CommentService;
+import com.example.demo.service.ProjectCommunicationService;
 import com.example.demo.service.ProjectDatabaseService;
+import com.example.demo.service.ProjectFrameworkService;
+import com.example.demo.service.ProjectInfrastructureService;
 import com.example.demo.service.ProjectLanguageService;
+import com.example.demo.service.ProjectManagementService;
 import com.example.demo.service.ProjectService;
 
 @Controller
@@ -41,22 +57,46 @@ public class ProjectController {
 	private final CommentService commentService;
 	private final LanguageTypeMapper languageTypeMapper;
 	private final DatabaseTypeMapper databaseTypeMapper;
+	private final InfrastructureTypeMapper infrastructureTypeMapper;
+	private final FrameworkTypeMapper frameworkTypeMapper;
+	private final ManagementTypeMapper managementTypeMapper;
+	private final CommunicationTypeMapper communicationTypeMapper;
 	private final ProjectLanguageService projectLanguageService;
 	private final ProjectDatabaseService projectDatabaseService;
+	private final ProjectInfrastructureService projectInfrastructureService;
+	private final ProjectFrameworkService projectFrameworkService;
+	private final ProjectManagementService projectManagementService;
+	private final ProjectCommunicationService projectCommunicationService;
 	
 	@Autowired
 	public ProjectController(ProjectService projectService,
 			CommentService commentService,
 			LanguageTypeMapper languageTypeMapper,
 			DatabaseTypeMapper databaseTypeMapper,
+			InfrastructureTypeMapper infrastructureTypeMapper,
+			FrameworkTypeMapper frameworkTypeMapper,
+			ManagementTypeMapper managementTypeMapper,
+			CommunicationTypeMapper communicationTypeMapper,
 			ProjectLanguageService projectLanguageService,
-			ProjectDatabaseService projectDatabaseService) {
+			ProjectDatabaseService projectDatabaseService,
+			ProjectInfrastructureService projectInfrastructureService,
+			ProjectFrameworkService projectFrameworkService,
+			ProjectManagementService projectManagementService,
+			ProjectCommunicationService projectCommunicationService) {
 		this.projectService = projectService;
 		this.commentService = commentService;
 		this.languageTypeMapper = languageTypeMapper;
 		this.databaseTypeMapper = databaseTypeMapper;
+		this.infrastructureTypeMapper = infrastructureTypeMapper;
+		this.frameworkTypeMapper = frameworkTypeMapper;
+		this.managementTypeMapper = managementTypeMapper;
+		this.communicationTypeMapper = communicationTypeMapper;
 		this.projectLanguageService = projectLanguageService;
 		this.projectDatabaseService = projectDatabaseService;
+		this.projectInfrastructureService = projectInfrastructureService;
+		this.projectFrameworkService = projectFrameworkService;
+		this.projectManagementService = projectManagementService;
+		this.projectCommunicationService = projectCommunicationService;
 	}
 	
 	@GetMapping("/")
@@ -72,13 +112,25 @@ public class ProjectController {
 	public String form(ProjectForm projectForm,
 			ProjectLanguageForm projectLanguageForm,
 			ProjectDatabaseForm projectDatabaseForm,
+			ProjectInfrastructureForm projectInfrastructureForm,
+			ProjectFrameworkForm projectFrameworkForm,
+			ProjectManagementForm projectManagementForm,
+			ProjectCommunicationForm projectCommunicationForm,
 			Model model) {
 		List<LanguageType> languageList = languageTypeMapper.findAll();
 		List<DatabaseType> databaseList = databaseTypeMapper.findAll();
+		List<InfrastructureType> infrastructureList = infrastructureTypeMapper.findAll();
+		List<FrameworkType> frameworkList = frameworkTypeMapper.findAll();
+		List<ManagementType> managementList = managementTypeMapper.findAll();
+		List<CommunicationType> communicationList = communicationTypeMapper.findAll();
 		model.addAttribute("headerTitle", "投稿する｜Portfolio Community");
 		model.addAttribute("title", "プロジェクトを投稿する");
 		model.addAttribute("languageList", languageList);
 		model.addAttribute("databaseList", databaseList);
+		model.addAttribute("infrastructureList", infrastructureList);
+		model.addAttribute("frameworkList", frameworkList);
+		model.addAttribute("managementList", managementList);
+		model.addAttribute("communicationList", communicationList);
 		return "project/add";
 	}
 	

@@ -8,7 +8,7 @@
 	</resultMap>
 	
 	<!-- framework_typeの全件取得-->
-	<select id="findAll" resultMap="frameworkTypeMap">
+	<select id="findAll" resultMap="FrameworkTypeMap">
 		SELECT framework_id, framework_type FROM framework_types
 	</select>
 </mapper>

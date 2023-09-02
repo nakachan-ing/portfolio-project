@@ -82,7 +82,35 @@ is-offset-one-fifth">
 		<label th:each="database, stat : ${databaseList}" class="checkbox m-2">
 		  <input type="checkbox" name="databaseId" th:value="${database.databaseId}" th:text="${database.databaseType}" th:field="${projectDatabaseForm.databaseIdList}">
 		</label>
-	</div>
+	</div><br>
+	
+	<b>インフラ</b>
+	<div class="control">
+		<label th:each="infrastructure, stat : ${infrastructureList}" class="checkbox m-2">
+		  <input type="checkbox" name="infrastructureId" th:value="${infrastructure.infrastructureId}" th:text="${infrastructure.infrastructureType}" th:field="${projectInfrastructureForm.infrastructureIdList}">
+		</label>
+	</div><br>
+	
+	<b>フレームワーク</b>
+	<div class="control">
+		<label th:each="framework, stat : ${frameworkList}" class="checkbox m-2">
+		  <input type="checkbox" name="frameworkId" th:value="${framework.frameworkId}" th:text="${framework.frameworkType}" th:field="${projectFrameworkForm.frameworkIdList}">
+		</label>
+	</div><br>
+	
+	<b>ソース管理</b>
+	<div class="control">
+		<label th:each="management, stat : ${managementList}" class="checkbox m-2">
+		  <input type="checkbox" name="managementId" th:value="${management.managementId}" th:text="${management.managementType}" th:field="${projectManagementForm.managementIdList}">
+		</label>
+	</div><br>
+	
+	<b>コミュニケーションツール</b>
+	<div class="control">
+		<label th:each="communication, stat : ${communicationList}" class="checkbox m-2">
+		  <input type="checkbox" name="communicationId" th:value="${communication.communicationId}" th:text="${communication.communicationType}" th:field="${projectCommunicationForm.communicationIdList}">
+		</label>
+	</div><br>
 	
 	<div class="field is-grouped">
   <div class="control">
