@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ManagementTypeMapper">
+	<resultMap id="ManagementTypeMap"
+		type="com.example.demo.entity.ManagementType">
+		<id column="management_id" jdbcType="INTEGER" property="managementId" />
+		<result column="management_type" jdbcType="VARCHAR" property="managementType" />
+	</resultMap>
+	
+	<!-- management_typeの全件取得-->
+	<select id="findAll" resultMap="ManagementTypeMap">
+		SELECT management_id, management_type FROM management_types
+	</select>
+</mapper>

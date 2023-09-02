@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FrameworkTypeMapper">
+	<resultMap id="FrameworkTypeMap"
+		type="com.example.demo.entity.FrameworkType">
+		<id column="framework_id" jdbcType="INTEGER" property="frameworkId" />
+		<result column="framework_type" jdbcType="VARCHAR" property="frameworkType" />
+	</resultMap>
+	
+	<!-- framework_typeの全件取得-->
+	<select id="findAll" resultMap="frameworkTypeMap">
+		SELECT framework_id, framework_type FROM framework_types
+	</select>
+</mapper>

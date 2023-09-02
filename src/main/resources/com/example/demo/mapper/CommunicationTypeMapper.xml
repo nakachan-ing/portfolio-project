@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CommunicationTypeMapper">
+	<resultMap id="CommunicationTypeMap"
+		type="com.example.demo.entity.CommunicationType">
+		<id column="communication_id" jdbcType="INTEGER" property="communicationId" />
+		<result column="communication_type" jdbcType="VARCHAR" property="communicationType" />
+	</resultMap>
+	
+	<!-- communication_typeの全件取得-->
+	<select id="findAll" resultMap="CommunicationTypeMap">
+		SELECT communication_id, communication_type FROM communication_types
+	</select>
+</mapper>
