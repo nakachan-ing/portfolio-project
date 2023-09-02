@@ -79,3 +79,31 @@ CREATE TABLE `project_databases`(
 	`database_id` int NOT NULL,
 	PRIMARY KEY(pd_id)
 );
+
+CREATE TABLE `project_infrastructures`(
+	`pi_id` int NOT NULL AUTO_INCREMENT,
+	`project_id` int NOT NULL,
+	`infrastructure_id` int NOT NULL,
+	PRIMARY KEY(pi_id)
+);
+
+CREATE TABLE `project_frameworks`(
+	`pf_id` int NOT NULL AUTO_INCREMENT,
+	`project_id` int NOT NULL,
+	`framework_id` int NOT NULL,
+	PRIMARY KEY(pf_id)
+);
+
+CREATE TABLE `project_managements`(
+	`pm_id` int NOT NULL AUTO_INCREMENT,
+	`project_id` int NOT NULL,
+	`management_id` int NOT NULL,
+	PRIMARY KEY(pm_id)
+);
+
+CREATE TABLE `project_communications`(
+	`pc_id` int NOT NULL AUTO_INCREMENT,
+	`project_id` int NOT NULL,
+	`communication_id` int NOT NULL,
+	PRIMARY KEY(pc_id)
+);

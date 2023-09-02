@@ -102,3 +102,23 @@ INSERT INTO project_databases(project_id, database_id)
 VALUES(2, 1);
 INSERT INTO project_databases(project_id, database_id)
 VALUES(2, 3);
+
+INSERT INTO project_infrastructures(project_id, infrastructure_id)
+VALUES(1, 1);
+INSERT INTO project_infrastructures(project_id, infrastructure_id)
+VALUES(2, 2);
+
+INSERT INTO project_frameworks(project_id, framework_id)
+VALUES(1, 1);
+INSERT INTO project_frameworks(project_id, framework_id)
+VALUES(2, 2);
+
+INSERT INTO project_managements(project_id, management_id)
+VALUES(1, 1);
+INSERT INTO project_managements(project_id, management_id)
+VALUES(2, 1);
+
+INSERT INTO project_communications(project_id, communication_id)
+VALUES(1, 2);
+INSERT INTO project_communications(project_id, communication_id)
+VALUES(2, 1);
