@@ -72,3 +72,10 @@ CREATE TABLE `project_languages`(
 	`language_id` int NOT NULL,
 	PRIMARY KEY(pl_id)
 );
+
+CREATE TABLE `project_databases`(
+	`pd_id` int NOT NULL AUTO_INCREMENT,
+	`project_id` int NOT NULL,
+	`database_id` int NOT NULL,
+	PRIMARY KEY(pd_id)
+);

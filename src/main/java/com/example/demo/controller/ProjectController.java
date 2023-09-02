@@ -17,14 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Comment;
+import com.example.demo.entity.DatabaseType;
 import com.example.demo.entity.LanguageType;
 import com.example.demo.entity.Project;
+import com.example.demo.entity.ProjectDatabase;
 import com.example.demo.entity.ProjectLanguage;
 import com.example.demo.form.CommentForm;
+import com.example.demo.form.ProjectDatabaseForm;
 import com.example.demo.form.ProjectForm;
 import com.example.demo.form.ProjectLanguageForm;
+import com.example.demo.mapper.DatabaseTypeMapper;
 import com.example.demo.mapper.LanguageTypeMapper;
 import com.example.demo.service.CommentService;
+import com.example.demo.service.ProjectDatabaseService;
 import com.example.demo.service.ProjectLanguageService;
 import com.example.demo.service.ProjectService;
 
@@ -35,17 +40,23 @@ public class ProjectController {
 	private final ProjectService projectService;
 	private final CommentService commentService;
 	private final LanguageTypeMapper languageTypeMapper;
+	private final DatabaseTypeMapper databaseTypeMapper;
 	private final ProjectLanguageService projectLanguageService;
+	private final ProjectDatabaseService projectDatabaseService;
 	
 	@Autowired
 	public ProjectController(ProjectService projectService,
 			CommentService commentService,
 			LanguageTypeMapper languageTypeMapper,
-			ProjectLanguageService projectLanguageService) {
+			DatabaseTypeMapper databaseTypeMapper,
+			ProjectLanguageService projectLanguageService,
+			ProjectDatabaseService projectDatabaseService) {
 		this.projectService = projectService;
 		this.commentService = commentService;
 		this.languageTypeMapper = languageTypeMapper;
+		this.databaseTypeMapper = databaseTypeMapper;
 		this.projectLanguageService = projectLanguageService;
+		this.projectDatabaseService = projectDatabaseService;
 	}
 	
 	@GetMapping("/")
@@ -60,17 +71,21 @@ public class ProjectController {
 	@GetMapping("/project/add")
 	public String form(ProjectForm projectForm,
 			ProjectLanguageForm projectLanguageForm,
+			ProjectDatabaseForm projectDatabaseForm,
 			Model model) {
 		List<LanguageType> languageList = languageTypeMapper.findAll();
+		List<DatabaseType> databaseList = databaseTypeMapper.findAll();
 		model.addAttribute("headerTitle", "投稿する｜Portfolio Community");
 		model.addAttribute("title", "プロジェクトを投稿する");
 		model.addAttribute("languageList", languageList);
+		model.addAttribute("databaseList", databaseList);
 		return "project/add";
 	}
 	
 	@PostMapping("/project/insert")
 	public String insert(@Validated @ModelAttribute ProjectForm projectForm,
 			@Validated @ModelAttribute ProjectLanguageForm projectLanguageForm,
+			@Validated @ModelAttribute ProjectDatabaseForm projectDatabaseForm,
 			BindingResult result,
 			Model model) {
 		if(!result.hasErrors()) {
@@ -91,6 +106,14 @@ public class ProjectController {
 				projectLanguage.setProjectId(project.getProjectId());
 				projectLanguage.setLanguageId(languageId);
 				projectLanguageService.insertProjectLanguage(projectLanguage);
+			}
+			
+			for (int databaseId : projectDatabaseForm.getDatabaseIdList()) {
+				System.out.println(databaseId); 
+				ProjectDatabase projectDatabase = new ProjectDatabase();
+				projectDatabase.setProjectId(project.getProjectId());
+				projectDatabase.setDatabaseId(databaseId);
+				projectDatabaseService.insertProjectDatabase(projectDatabase);
 			}
 			
 			return "redirect:/";

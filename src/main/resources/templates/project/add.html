@@ -75,6 +75,13 @@ is-offset-one-fifth">
 		<label th:each="language, stat : ${languageList}" class="checkbox m-2">
 		  <input type="checkbox" name="languageId" th:value="${language.languageId}" th:text="${language.languageType}" th:field="${projectLanguageForm.languageIdList}">
 		</label>
+	</div><br>
+	
+	<b>データベース</b>
+	<div class="control">
+		<label th:each="database, stat : ${databaseList}" class="checkbox m-2">
+		  <input type="checkbox" name="databaseId" th:value="${database.databaseId}" th:text="${database.databaseType}" th:field="${projectDatabaseForm.databaseIdList}">
+		</label>
 	</div>
 	
 	<div class="field is-grouped">

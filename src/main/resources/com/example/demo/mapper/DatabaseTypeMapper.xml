@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DatabaseTypeMapper">
+	<resultMap id="DatabaseTypeMap"
+		type="com.example.demo.entity.DatabaseType">
+		<id column="database_id" jdbcType="INTEGER" property="databaseId" />
+		<result column="database_type" jdbcType="VARCHAR" property="databaseType" />
+	</resultMap>
+	
+	<!-- database_typeの全件取得-->
+	<select id="findAll" resultMap="DatabaseTypeMap">
+		SELECT database_id, database_type FROM database_types
+	</select>
+</mapper>

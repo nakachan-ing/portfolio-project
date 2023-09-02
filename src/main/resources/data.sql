@@ -93,3 +93,12 @@ INSERT INTO project_languages(project_id, language_id)
 VALUES(2, 3);
 INSERT INTO project_languages(project_id, language_id)
 VALUES(2, 11);
+
+INSERT INTO project_databases(project_id, database_id)
+VALUES(1, 3);
+INSERT INTO project_databases(project_id, database_id)
+VALUES(1, 2);
+INSERT INTO project_databases(project_id, database_id)
+VALUES(2, 1);
+INSERT INTO project_databases(project_id, database_id)
+VALUES(2, 3);
