@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import lombok.Data;
 
 /*
- * ProjectとLanguageの中間テーブル
+ * ProjectとDatabaseの中間テーブル
  * */
 
 @Data
