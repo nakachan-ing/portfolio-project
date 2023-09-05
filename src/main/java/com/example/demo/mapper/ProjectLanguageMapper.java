@@ -8,4 +8,5 @@ import com.example.demo.entity.ProjectLanguage;
 public interface ProjectLanguageMapper {
 	
 	void insertProjectLanguage(ProjectLanguage projectLanguage);
+	
 }

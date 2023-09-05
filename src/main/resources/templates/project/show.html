@@ -36,6 +36,10 @@
 					<div class="content">
 						<p th:text="*{durationType.durationType}"></p>
 					</div>
+					<p class="title is-5">使用言語</p>
+					<div class="tags are-medium">
+					  <span th:each="languageType : ${languageTypeList}" th:text="${languageType.languageType}" class="tag"></span>
+					</div>
 				</article>
 			</div>
 			<div class="control">

@@ -222,9 +222,11 @@ public class ProjectController {
 			CommentForm commentForm,
 			Model model) {
 		Project project = projectService.findByIdJoin(id).get();
+		List<LanguageType> languageTypeList = languageTypeMapper.findGroupByProjectId(id);
 		commentForm.setNewComment(true);
 		model.addAttribute("headerTitle", project.getProjectName());
 		model.addAttribute("project", project);
+		model.addAttribute("languageTypeList", languageTypeList);
 		model.addAttribute("commentForm", commentForm);
 		return "/project/show";
 	}

@@ -85,13 +85,13 @@ INSERT INTO communication_types(communication_type)VALUES('Notion');
 INSERT INTO communication_types(communication_type)VALUES('ChatWork');
 INSERT INTO communication_types(communication_type)VALUES('その他');
 
-INSERT INTO project_languages(project_id, language_id)
+INSERT INTO project_languages(pl_project_id, pl_language_id)
 VALUES(1, 1);
-INSERT INTO project_languages(project_id, language_id)
+INSERT INTO project_languages(pl_project_id, pl_language_id)
 VALUES(1, 10);
-INSERT INTO project_languages(project_id, language_id)
+INSERT INTO project_languages(pl_project_id, pl_language_id)
 VALUES(2, 3);
-INSERT INTO project_languages(project_id, language_id)
+INSERT INTO project_languages(pl_project_id, pl_language_id)
 VALUES(2, 11);
 
 INSERT INTO project_databases(project_id, database_id)

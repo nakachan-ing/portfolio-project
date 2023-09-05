@@ -10,4 +10,6 @@ import com.example.demo.entity.LanguageType;
 public interface LanguageTypeMapper {
 	
 	List<LanguageType> findAll();
+	
+	List<LanguageType> findGroupByProjectId(int id);
 }

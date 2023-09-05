@@ -15,10 +15,13 @@ public class ProjectLanguageServiceImpl implements ProjectLanguageService {
 	public ProjectLanguageServiceImpl(ProjectLanguageMapper projectLanguageMapper) {
 		this.projectLanguageMapper = projectLanguageMapper;
 	}
-	
+
 	@Override
 	public void insertProjectLanguage(ProjectLanguage projectLanguage) {
 		projectLanguageMapper.insertProjectLanguage(projectLanguage);
+		
 	}
+	
+	
 
 }

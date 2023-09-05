@@ -14,4 +14,5 @@ public class ProjectLanguage {
 	private int projectId;
 	
 	private int languageId;
+
 }

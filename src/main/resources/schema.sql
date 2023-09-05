@@ -68,8 +68,8 @@ CREATE TABLE `communication_types`(
 
 CREATE TABLE `project_languages`(
 	`pl_id` int NOT NULL AUTO_INCREMENT,
-	`project_id` int NOT NULL,
-	`language_id` int NOT NULL,
+	`pl_project_id` int NOT NULL,
+	`pl_language_id` int NOT NULL,
 	PRIMARY KEY(pl_id)
 );
 

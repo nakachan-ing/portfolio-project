@@ -5,10 +5,28 @@
 		type="com.example.demo.entity.LanguageType">
 		<id column="language_id" jdbcType="INTEGER" property="languageId" />
 		<result column="language_type" jdbcType="VARCHAR" property="languageType" />
+		
+		<collection property="projectLanguageList" ofType="com.example.demo.entity.ProjectLanguage">
+			<id column="pl_id" jdbcType="INTEGER" property="plId" />
+			<result column="project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="language_id" jdbcType="INTEGER" property="languageId" />
+		</collection>
 	</resultMap>
 	
 	<!-- language_typeの全件取得-->
 	<select id="findAll" resultMap="LanguageTypeMap">
 		SELECT language_id, language_type FROM language_types
+	</select>
+	
+	<!-- projectに紐づくlanguagesを取得 -->
+	<select id="findGroupByProjectId" resultMap="LanguageTypeMap">
+		SELECT
+			project_languages.pl_project_id,
+			project_languages.pl_language_id,
+			language_types.language_type
+		FROM Project_languages
+		INNER JOIN language_types
+			ON project_languages.pl_language_id = language_types.language_id
+		WHERE project_languages.pl_project_id = #{projectId}
 	</select>
 </mapper>
