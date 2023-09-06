@@ -94,31 +94,31 @@ VALUES(2, 3);
 INSERT INTO project_languages(pl_project_id, pl_language_id)
 VALUES(2, 11);
 
-INSERT INTO project_databases(project_id, database_id)
+INSERT INTO project_databases(pd_project_id, pd_database_id)
 VALUES(1, 3);
-INSERT INTO project_databases(project_id, database_id)
+INSERT INTO project_databases(pd_project_id, pd_database_id)
 VALUES(1, 2);
-INSERT INTO project_databases(project_id, database_id)
+INSERT INTO project_databases(pd_project_id, pd_database_id)
 VALUES(2, 1);
-INSERT INTO project_databases(project_id, database_id)
+INSERT INTO project_databases(pd_project_id, pd_database_id)
 VALUES(2, 3);
 
-INSERT INTO project_infrastructures(project_id, infrastructure_id)
+INSERT INTO project_infrastructures(pi_project_id, pi_infrastructure_id)
 VALUES(1, 1);
-INSERT INTO project_infrastructures(project_id, infrastructure_id)
+INSERT INTO project_infrastructures(pi_project_id, pi_infrastructure_id)
 VALUES(2, 2);
 
-INSERT INTO project_frameworks(project_id, framework_id)
+INSERT INTO project_frameworks(pf_project_id, pf_framework_id)
 VALUES(1, 1);
-INSERT INTO project_frameworks(project_id, framework_id)
+INSERT INTO project_frameworks(pf_project_id, pf_framework_id)
 VALUES(2, 2);
 
-INSERT INTO project_managements(project_id, management_id)
+INSERT INTO project_managements(pm_project_id, pm_management_id)
 VALUES(1, 1);
-INSERT INTO project_managements(project_id, management_id)
+INSERT INTO project_managements(pm_project_id, pm_management_id)
 VALUES(2, 1);
 
-INSERT INTO project_communications(project_id, communication_id)
+INSERT INTO project_communications(pc_project_id, pc_communication_id)
 VALUES(1, 2);
-INSERT INTO project_communications(project_id, communication_id)
+INSERT INTO project_communications(pc_project_id, pc_communication_id)
 VALUES(2, 1);

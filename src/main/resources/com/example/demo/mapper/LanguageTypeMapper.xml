@@ -8,8 +8,8 @@
 		
 		<collection property="projectLanguageList" ofType="com.example.demo.entity.ProjectLanguage">
 			<id column="pl_id" jdbcType="INTEGER" property="plId" />
-			<result column="project_id" jdbcType="INTEGER" property="projectId" />
-			<result column="language_id" jdbcType="INTEGER" property="languageId" />
+			<result column="pl_project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="pl_language_id" jdbcType="INTEGER" property="languageId" />
 		</collection>
 	</resultMap>
 	
