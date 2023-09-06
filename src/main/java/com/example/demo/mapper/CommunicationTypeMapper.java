@@ -10,4 +10,6 @@ import com.example.demo.entity.CommunicationType;
 public interface CommunicationTypeMapper {
 
 	List<CommunicationType> findAll();
+	
+	List<CommunicationType> findGroupByProjectId(int id);
 }

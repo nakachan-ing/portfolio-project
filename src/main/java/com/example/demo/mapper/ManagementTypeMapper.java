@@ -10,4 +10,6 @@ import com.example.demo.entity.ManagementType;
 public interface ManagementTypeMapper {
 
 	List<ManagementType> findAll();
+	
+	List<ManagementType> findGroupByProjectId(int id);
 }

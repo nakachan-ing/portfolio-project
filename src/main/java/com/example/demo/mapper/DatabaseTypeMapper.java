@@ -10,4 +10,6 @@ import com.example.demo.entity.DatabaseType;
 public interface DatabaseTypeMapper {
 
 	List<DatabaseType> findAll();
+	
+	List<DatabaseType> findGroupByProjectId(int id);
 }

@@ -10,4 +10,6 @@ import com.example.demo.entity.FrameworkType;
 public interface FrameworkTypeMapper {
 
 	List<FrameworkType> findAll();
+	
+	List<FrameworkType> findGroupByProjectId(int id);
 }

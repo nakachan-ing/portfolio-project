@@ -5,10 +5,28 @@
 		type="com.example.demo.entity.DatabaseType">
 		<id column="database_id" jdbcType="INTEGER" property="databaseId" />
 		<result column="database_type" jdbcType="VARCHAR" property="databaseType" />
+		
+		<collection property="projectDatabaseList" ofType="com.example.demo.entity.ProjectDatabase">
+			<id column="pd_id" jdbcType="INTEGER" property="pdId" />
+			<result column="pd_project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="pd_database_id" jdbcType="INTEGER" property="databaseId" />
+		</collection>
 	</resultMap>
 	
 	<!-- database_typeの全件取得-->
 	<select id="findAll" resultMap="DatabaseTypeMap">
 		SELECT database_id, database_type FROM database_types
+	</select>
+	
+	<!-- projectに紐づくlanguagesを取得 -->
+	<select id="findGroupByProjectId" resultMap="DatabaseTypeMap">
+		SELECT
+			project_databases.pd_project_id,
+			project_databases.pd_database_id,
+			database_types.database_type
+		FROM Project_databases
+		INNER JOIN database_types
+			ON project_databases.pd_database_id = database_types.database_id
+		WHERE project_databases.pd_project_id = #{projectId}
 	</select>
 </mapper>

@@ -10,4 +10,6 @@ import com.example.demo.entity.InfrastructureType;
 public interface InfrastructureTypeMapper {
 
 	List<InfrastructureType> findAll();
+	
+	List<InfrastructureType> indGroupByProjectId(int id);
 }
