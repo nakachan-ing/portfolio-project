@@ -4,16 +4,16 @@
 	<resultMap id="ProjectInfrastructureMap"
 		type="com.example.demo.entity.ProjectInfrastructure">
 		<id column="pi_id" jdbcType="INTEGER" property="piId" />
-		<result column="project_id" jdbcType="INTEGER" property="projectId" />
-		<result column="infrastructure_id" jdbcType="INTEGER" property="infrastructureId" />
+		<result column="pi_project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="pi_infrastructure_id" jdbcType="INTEGER" property="infrastructureId" />
 	</resultMap>
 	
 	<!-- project_infrastructureを一件新規追加 -->
 	<insert id="insertProjectInfrastructure">
 		INSERT INTO project_infrastructures
 		(
-			project_id,
-			infrastructure_id
+			pi_project_id,
+			pi_infrastructure_id
 		)
 		VALUES
 		(

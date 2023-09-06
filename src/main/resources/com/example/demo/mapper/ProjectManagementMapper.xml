@@ -4,16 +4,16 @@
 	<resultMap id="ProjectManagementMap"
 		type="com.example.demo.entity.ProjectManagement">
 		<id column="pm_id" jdbcType="INTEGER" property="pmId" />
-		<result column="project_id" jdbcType="INTEGER" property="projectId" />
-		<result column="management_id" jdbcType="INTEGER" property="managementId" />
+		<result column="pm_project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="pm_management_id" jdbcType="INTEGER" property="managementId" />
 	</resultMap>
 	
 	<!-- project_managementを一件新規追加 -->
 	<insert id="insertProjectManagement">
 		INSERT INTO project_managements
 		(
-			project_id,
-			management_id
+			pm_project_id,
+			pm_management_id
 		)
 		VALUES
 		(

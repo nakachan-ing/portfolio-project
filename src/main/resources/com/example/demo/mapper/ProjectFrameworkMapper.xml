@@ -4,16 +4,16 @@
 	<resultMap id="ProjectFrameworkMap"
 		type="com.example.demo.entity.ProjectFramework">
 		<id column="pf_id" jdbcType="INTEGER" property="pfId" />
-		<result column="project_id" jdbcType="INTEGER" property="projectId" />
-		<result column="framework_id" jdbcType="INTEGER" property="frameworkId" />
+		<result column="pf_project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="pf_framework_id" jdbcType="INTEGER" property="frameworkId" />
 	</resultMap>
 	
 	<!-- project_frameworkを一件新規追加 -->
 	<insert id="insertProjectFramework">
 		INSERT INTO project_frameworks
 		(
-			project_id,
-			framework_id
+			pf_project_id,
+			pf_framework_id
 		)
 		VALUES
 		(

@@ -8,8 +8,6 @@
 	th:href="@{/css/bulma.min.css}">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/js/comment.js"></script> -->
 <title th:text="${headerTitle}">Insert title here</title>
 </head>
 <body>
@@ -26,40 +24,48 @@
 					        <th:block th:text="${str}"/>
 					        <br th:if="${!stat.last}"/>
 					    </th:block>
-					</div>
-											
+					    <hr>
+					</div>	
 					<p class="title is-5">プロジェクトのレベル</p>
 					<div class="content">
 						<p th:text="*{levelType.levelType}"></p>
+						<hr>
 					</div>
 					<p class="title is-5">プロジェクトの期間</p>
 					<div class="content">
 						<p th:text="*{durationType.durationType}"></p>
+						<hr>
 					</div>
 					<p class="title is-5">使用言語</p>
 					<div class="tags are-medium">
 					  <span th:each="languageType : ${languageTypeList}" th:text="${languageType.languageType}" class="tag is-primary is-light"></span>
 					</div>
+					<hr>
 					<p class="title is-5">データベース</p>
 					<div class="tags are-medium">
 					  <span th:each="databaseType : ${databaseTypeList}" th:text="${databaseType.databaseType}" class="tag is-link is-light"></span>
 					</div>
+					<hr>
 					<p class="title is-5">インフラ</p>
 					<div class="tags are-medium">
 					  <span th:each="infrastructureType : ${infrastructureTypeList}" th:text="${infrastructureType.infrastructureType}" class="tag is-info is-light"></span>
 					</div>
+					<hr>
 					<p class="title is-5">フレームワーク</p>
 					<div class="tags are-medium">
 					  <span th:each="frameworkType : ${frameworkTypeList}" th:text="${frameworkType.frameworkType}" class="tag is-success is-light"></span>
 					</div>
+					<hr>
 					<p class="title is-5">ソース管理</p>
 					<div class="tags are-medium">
 					  <span th:each="managementType : ${managementTypeList}" th:text="${managementType.managementType}" class="tag is-warning is-light"></span>
 					</div>
+					<hr>
 					<p class="title is-5">コミュニケーションツール</p>
 					<div class="tags are-medium">
 					  <span th:each="communicationType : ${communicationTypeList}" th:text="${communicationType.communicationType}" class="tag is-danger is-light"></span>
 					</div>
+					<hr>
 				</article>
 			</div>
 			<div class="control">
