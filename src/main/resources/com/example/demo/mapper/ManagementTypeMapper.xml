@@ -5,10 +5,28 @@
 		type="com.example.demo.entity.ManagementType">
 		<id column="management_id" jdbcType="INTEGER" property="managementId" />
 		<result column="management_type" jdbcType="VARCHAR" property="managementType" />
+		
+		<collection property="projectManagementList" ofType="com.example.demo.entity.ProjectManagement">
+			<id column="pm_id" jdbcType="INTEGER" property="pmId" />
+			<result column="pm_project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="pm_management_id" jdbcType="INTEGER" property="managementId" />
+		</collection>
 	</resultMap>
 	
 	<!-- management_typeの全件取得-->
 	<select id="findAll" resultMap="ManagementTypeMap">
 		SELECT management_id, management_type FROM management_types
+	</select>
+	
+	<!-- projectに紐づくmanagementsを取得 -->
+	<select id="findGroupByProjectId" resultMap="ManagementTypeMap">
+		SELECT
+			project_managements.pm_project_id,
+			project_managements.pm_management_id,
+			management_types.management_type
+		FROM Project_managements
+		INNER JOIN management_types
+			ON project_managements.pm_management_id = management_types.management_id
+		WHERE project_managements.pm_project_id = #{projectId}
 	</select>
 </mapper>

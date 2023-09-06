@@ -5,10 +5,28 @@
 		type="com.example.demo.entity.CommunicationType">
 		<id column="communication_id" jdbcType="INTEGER" property="communicationId" />
 		<result column="communication_type" jdbcType="VARCHAR" property="communicationType" />
+		
+		<collection property="projectCommunicationList" ofType="com.example.demo.entity.ProjectCommunication">
+			<id column="pc_id" jdbcType="INTEGER" property="pcId" />
+			<result column="pc_project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="pc_communication_id" jdbcType="INTEGER" property="communicationId" />
+		</collection>
 	</resultMap>
 	
 	<!-- communication_typeの全件取得-->
 	<select id="findAll" resultMap="CommunicationTypeMap">
 		SELECT communication_id, communication_type FROM communication_types
+	</select>
+	
+	<!-- projectに紐づくcommunicationsを取得 -->
+	<select id="findGroupByProjectId" resultMap="CommunicationTypeMap">
+		SELECT
+			project_communications.pc_project_id,
+			project_communications.pc_communication_id,
+			communication_types.communication_type
+		FROM Project_communications
+		INNER JOIN communication_types
+			ON project_communications.pc_communication_id = communication_types.communication_id
+		WHERE project_communications.pc_project_id = #{projectId}
 	</select>
 </mapper>

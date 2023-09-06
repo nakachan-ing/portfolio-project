@@ -5,10 +5,28 @@
 		type="com.example.demo.entity.InfrastructureType">
 		<id column="infrastructure_id" jdbcType="INTEGER" property="infrastructureId" />
 		<result column="infrastructure_type" jdbcType="VARCHAR" property="infrastructureType" />
+		
+		<collection property="projectInfrastructureList" ofType="com.example.demo.entity.ProjectInfrastructure">
+			<id column="pi_id" jdbcType="INTEGER" property="piId" />
+			<result column="pi_project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="pi_infrastructure_id" jdbcType="INTEGER" property="infrastructureId" />
+		</collection>
 	</resultMap>
 	
 	<!-- infrastructure_typeの全件取得-->
 	<select id="findAll" resultMap="InfrastructureTypeMap">
 		SELECT infrastructure_id, infrastructure_type FROM infrastructure_types
+	</select>
+	
+	<!-- projectに紐づくinfrastructuresを取得 -->
+	<select id="findGroupByProjectId" resultMap="InfrastructureTypeMap">
+		SELECT
+			project_infrastructures.pi_project_id,
+			project_infrastructures.pi_infrastructure_id,
+			infrastructure_types.infrastructure_type
+		FROM Project_infrastructures
+		INNER JOIN infrastructure_types
+			ON project_infrastructures.pi_infrastructure_id = infrastructure_types.infrastructure_id
+		WHERE project_infrastructures.pi_project_id = #{projectId}
 	</select>
 </mapper>

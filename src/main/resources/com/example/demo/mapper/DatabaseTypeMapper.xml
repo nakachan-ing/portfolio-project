@@ -18,7 +18,7 @@
 		SELECT database_id, database_type FROM database_types
 	</select>
 	
-	<!-- projectに紐づくlanguagesを取得 -->
+	<!-- projectに紐づくdatabasesを取得 -->
 	<select id="findGroupByProjectId" resultMap="DatabaseTypeMap">
 		SELECT
 			project_databases.pd_project_id,

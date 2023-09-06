@@ -5,10 +5,28 @@
 		type="com.example.demo.entity.FrameworkType">
 		<id column="framework_id" jdbcType="INTEGER" property="frameworkId" />
 		<result column="framework_type" jdbcType="VARCHAR" property="frameworkType" />
+		
+		<collection property="projectFrameworkList" ofType="com.example.demo.entity.ProjectFramework">
+			<id column="pf_id" jdbcType="INTEGER" property="pfId" />
+			<result column="pf_project_id" jdbcType="INTEGER" property="projectId" />
+			<result column="pf_framework_id" jdbcType="INTEGER" property="frameworkId" />
+		</collection>
 	</resultMap>
 	
 	<!-- framework_typeの全件取得-->
 	<select id="findAll" resultMap="FrameworkTypeMap">
 		SELECT framework_id, framework_type FROM framework_types
+	</select>
+	
+	<!-- projectに紐づくframeworksを取得 -->
+	<select id="findGroupByProjectId" resultMap="FrameworkTypeMap">
+		SELECT
+			project_frameworks.pf_project_id,
+			project_frameworks.pf_framework_id,
+			framework_types.framework_type
+		FROM Project_frameworks
+		INNER JOIN framework_types
+			ON project_frameworks.pf_framework_id = framework_types.framework_id
+		WHERE project_frameworks.pf_project_id = #{projectId}
 	</select>
 </mapper>
