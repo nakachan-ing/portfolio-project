@@ -38,7 +38,27 @@
 					</div>
 					<p class="title is-5">使用言語</p>
 					<div class="tags are-medium">
-					  <span th:each="languageType : ${languageTypeList}" th:text="${languageType.languageType}" class="tag"></span>
+					  <span th:each="languageType : ${languageTypeList}" th:text="${languageType.languageType}" class="tag is-primary is-light"></span>
+					</div>
+					<p class="title is-5">データベース</p>
+					<div class="tags are-medium">
+					  <span th:each="databaseType : ${databaseTypeList}" th:text="${databaseType.databaseType}" class="tag is-link is-light"></span>
+					</div>
+					<p class="title is-5">インフラ</p>
+					<div class="tags are-medium">
+					  <span th:each="infrastructureType : ${infrastructureTypeList}" th:text="${infrastructureType.infrastructureType}" class="tag is-info is-light"></span>
+					</div>
+					<p class="title is-5">フレームワーク</p>
+					<div class="tags are-medium">
+					  <span th:each="frameworkType : ${frameworkTypeList}" th:text="${frameworkType.frameworkType}" class="tag is-success is-light"></span>
+					</div>
+					<p class="title is-5">ソース管理</p>
+					<div class="tags are-medium">
+					  <span th:each="managementType : ${managementTypeList}" th:text="${managementType.managementType}" class="tag is-warning is-light"></span>
+					</div>
+					<p class="title is-5">コミュニケーションツール</p>
+					<div class="tags are-medium">
+					  <span th:each="communicationType : ${communicationTypeList}" th:text="${communicationType.communicationType}" class="tag is-danger is-light"></span>
 					</div>
 				</article>
 			</div>

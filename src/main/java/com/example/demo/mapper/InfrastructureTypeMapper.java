@@ -11,5 +11,5 @@ public interface InfrastructureTypeMapper {
 
 	List<InfrastructureType> findAll();
 	
-	List<InfrastructureType> indGroupByProjectId(int id);
+	List<InfrastructureType> findGroupByProjectId(int id);
 }

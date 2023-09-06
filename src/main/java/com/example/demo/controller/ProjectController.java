@@ -223,10 +223,20 @@ public class ProjectController {
 			Model model) {
 		Project project = projectService.findByIdJoin(id).get();
 		List<LanguageType> languageTypeList = languageTypeMapper.findGroupByProjectId(id);
+		List<DatabaseType> databaseTypeList = databaseTypeMapper.findGroupByProjectId(id);
+		List<InfrastructureType> infrastructureTypeList = infrastructureTypeMapper.findGroupByProjectId(id);
+		List<FrameworkType> frameworkTypeList = frameworkTypeMapper.findGroupByProjectId(id);
+		List<ManagementType> managementTypeList = managementTypeMapper.findGroupByProjectId(id);
+		List<CommunicationType> communicationTypeList = communicationTypeMapper.findGroupByProjectId(id);
 		commentForm.setNewComment(true);
 		model.addAttribute("headerTitle", project.getProjectName());
 		model.addAttribute("project", project);
 		model.addAttribute("languageTypeList", languageTypeList);
+		model.addAttribute("databaseTypeList", databaseTypeList);
+		model.addAttribute("infrastructureTypeList", infrastructureTypeList);
+		model.addAttribute("frameworkTypeList", frameworkTypeList);
+		model.addAttribute("managementTypeList", managementTypeList);
+		model.addAttribute("communicationTypeList", communicationTypeList);
 		model.addAttribute("commentForm", commentForm);
 		return "/project/show";
 	}
